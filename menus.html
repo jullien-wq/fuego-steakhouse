@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menus | Fuego Steakhouse &amp; Bar — North Bergen, NJ</title>
+<meta name="description" content="Explore the menus at Fuego Steakhouse & Bar in North Bergen, NJ — premium steaks and seafood for dinner, a refined daily brunch, and a vibrant happy hour.">
+<meta property="og:title" content="Menus | Fuego Steakhouse & Bar">
+<meta property="og:description" content="Premium steaks, fresh seafood, handcrafted cocktails, brunch favorites, and curated selections at Fuego Steakhouse & Bar.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Libre+Caslon+Display&family=Mulish:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<meta name="ext-resource-dependency" content="assets/dinner-menu.pdf" data-resource-id="dinnerPdf">
+<meta name="ext-resource-dependency" content="assets/brunch-menu.pdf" data-resource-id="brunchPdf">
+<style>
+  /* ---- Menus page ---- */
+  .page-hero{ position:relative; min-height:58vh; display:flex; align-items:center; justify-content:center; text-align:center; overflow:hidden; }
+  .page-hero .media{ position:absolute; inset:0; z-index:0; }
+  .page-hero .media image-slot, .page-hero .media img{ width:100%; height:100%; object-fit:cover; }
+  .page-hero .media::after{ content:""; position:absolute; inset:0;
+    background:linear-gradient(0deg,var(--bg) 3%,rgba(16,12,10,.5) 48%,rgba(16,12,10,.66)); }
+  .page-hero .inner{ position:relative; z-index:2; padding:152px var(--gutter) 74px; max-width:780px; }
+  .page-hero h1{ font-size:clamp(46px,6.2vw,88px); margin-bottom:18px; }
+  .page-hero .lead{ margin:0 auto; max-width:52ch; }
+
+  .script-label{ font-family:var(--font-display); font-style:italic; color:var(--gold);
+    font-size:clamp(23px,2.4vw,30px); line-height:1; margin:0 0 12px; }
+
+  .menus-intro{ padding-block:var(--pad-section) 0; text-align:center; }
+  .menus-intro .head{ max-width:680px; margin-inline:auto; }
+  .menus-intro h2{ margin-bottom:22px; }
+  .menus-intro .lead{ margin:0 auto; max-width:60ch; }
+
+  .menu-tiles{ display:grid; grid-template-columns:repeat(3,1fr); gap:30px; margin-top:60px; }
+  .menu-tile{ display:flex; flex-direction:column; align-items:center; text-align:center;
+    background:linear-gradient(180deg,rgba(27,21,18,.7),rgba(20,15,12,.5));
+    border:1px solid var(--line); border-radius:6px; padding:54px 38px 46px;
+    transition:border-color .35s var(--ease), transform .35s var(--ease), background .35s var(--ease); }
+  .menu-tile:hover{ border-color:rgba(200,154,82,.5); transform:translateY(-6px);
+    background:linear-gradient(180deg,rgba(33,25,21,.85),rgba(22,16,13,.6)); }
+  .menu-tile .ring{ width:104px; height:104px; border-radius:50%; flex:none;
+    border:1px dashed rgba(200,154,82,.55); display:flex; align-items:center; justify-content:center;
+    margin-bottom:30px; position:relative; }
+  .menu-tile .ring::before{ content:""; position:absolute; inset:9px; border-radius:50%; border:1px solid rgba(200,154,82,.16); }
+  .menu-tile .ring svg{ width:46px; height:46px; color:var(--gold); }
+  .menu-tile h3{ font-family:var(--font-display); font-size:27px; margin-bottom:18px; }
+  .menu-tile p{ color:var(--text-dim); font-size:15.5px; line-height:1.65; margin:0 0 32px; max-width:34ch; }
+  .menu-tile .btn{ margin-top:auto; }
+
+  /* newsletter band */
+  .news-band{ position:relative; text-align:center; overflow:hidden; margin-top:var(--pad-section); }
+  .news-band .media{ position:absolute; inset:0; z-index:0; }
+  .news-band .media image-slot, .news-band .media img{ width:100%; height:100%; object-fit:cover; }
+  .news-band .media::after{ content:""; position:absolute; inset:0; background:rgba(8,6,5,.8); }
+  .news-band .inner{ position:relative; z-index:2; padding:clamp(82px,10vw,132px) var(--gutter); max-width:780px; margin-inline:auto; }
+  .news-band h2{ margin:8px 0 20px; }
+  .news-band p{ color:var(--text-dim); margin:0 auto 36px; max-width:58ch; }
+
+  .dropdown a.active{ color:var(--gold); background:rgba(200,154,82,.1); }
+
+  @media (max-width:900px){
+    .menu-tiles{ grid-template-columns:1fr; max-width:440px; margin-inline:auto; }
+  }
+</style>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"Menu","name":"Fuego Steakhouse & Bar Menus",
+  "hasMenuSection":[
+    {"@type":"MenuSection","name":"Dinner Menu"},
+    {"@type":"MenuSection","name":"Brunch Menu"},
+    {"@type":"MenuSection","name":"Happy Hour"}
+  ]
+}
+</script>
+</head>
+<body>
+
+<!-- ============================ HEADER ============================ -->
+<header class="site-header" id="header">
+  <div class="wrap header-inner">
+    <a class="brand" href="index.html" aria-label="Fuego Steakhouse & Bar home">
+      <img class="brand-logo" src="assets/fuego-logo.png" alt="Fuego Steakhouse & Bar" width="150" height="150">
+    </a>
+
+    <nav class="nav" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <div class="nav-item has-dropdown">
+        <a href="menus.html" class="has-caret active" aria-haspopup="true" aria-expanded="false">Menus
+          <svg width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        </a>
+        <div class="dropdown" role="menu" aria-label="Menus submenu">
+          <a href="#" role="menuitem">Order Online</a>
+          <a href="gift-cards.html" role="menuitem">Gift Cards &amp; Rewards</a>
+        </div>
+      </div>
+      <a href="index.html#entertainment">WEEKLY EVENTS</a>
+      <a href="index.html#private-events">LARGE EVENTS</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+
+    <div class="header-cta">
+      <button class="btn btn-ghost" data-reserve>Reserve a Table</button>
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- mobile drawer -->
+<nav class="mobile-nav" id="mobileNav" aria-label="Mobile">
+  <a href="index.html" data-mclose>Home</a>
+  <a href="menus.html" data-mclose>Menus</a>
+  <div class="mobile-sub">
+    <a href="#" data-mclose>Order Online</a>
+    <a href="gift-cards.html" data-mclose>Gift Cards &amp; Rewards</a>
+  </div>
+  <a href="index.html#entertainment" data-mclose>Weekly Events</a>
+  <a href="index.html#private-events" data-mclose>Large Events</a>
+  <a href="gallery.html" data-mclose>Gallery</a>
+  <a href="index.html#contact" data-mclose>Contact</a>
+  <button class="btn btn-gold" data-reserve data-mclose>Reserve a Table</button>
+</nav>
+
+<main>
+
+  <!-- ============================ PAGE HERO ============================ -->
+  <section class="page-hero" aria-labelledby="menus-h1">
+    <div class="media">
+      <img src="assets/hero-tomahawk.jpg" alt="Flame-finished tomahawk steak branded with the Fuego Steakhouse & Bar mark, with chimichurri and rosemary">
+    </div>
+    <div class="inner">
+      <h1 id="menus-h1">Menus</h1>
+      <p class="lead">Explore premium steaks, fresh seafood, handcrafted cocktails, brunch favorites, and curated wine selections.</p>
+    </div>
+  </section>
+
+  <!-- ============================ EXPLORE MENUS ============================ -->
+  <section class="menus-intro wrap" aria-labelledby="menus-h2">
+    <div class="head">
+      <p class="script-label">Our Menus</p>
+      <h2 id="menus-h2">Explore Our Menus</h2>
+      <p class="lead">From indulgent brunch and happy hour favorites to signature steaks, cocktails, and fine wines, discover menus crafted for every mood and occasion.</p>
+    </div>
+
+    <div class="menu-tiles">
+      <article class="menu-tile reveal">
+        <span class="ring" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M5 3v7a2 2 0 002 2h0a2 2 0 002-2V3M7 12v9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 3c-1.4 0-2.5 1.6-2.5 4s1.1 4 2.5 4M15 3c1.4 0 2.5 1.6 2.5 4s-1.1 4-2.5 4M15 11v10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <h3>Dinner Menu</h3>
+        <p>Indulge in premium steaks, fresh seafood, elevated sides, and chef-driven specialties crafted with quality and precision.</p>
+        <a class="btn btn-gold" href="assets/dinner-menu.pdf" target="_blank" rel="noopener">View Menu</a>
+      </article>
+
+      <article class="menu-tile reveal">
+        <span class="ring" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="8" cy="7" r="2.4" stroke="currentColor" stroke-width="1.5"/><circle cx="16" cy="7" r="2.4" stroke="currentColor" stroke-width="1.5"/><path d="M3.5 19a4.5 4.5 0 019 0M11.5 19a4.5 4.5 0 019 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </span>
+        <h3>Brunch Menu</h3>
+        <p>Enjoy a refined brunch experience featuring savory favorites, signature dishes, and perfectly paired morning cocktails.</p>
+        <a class="btn btn-gold" href="assets/brunch-menu.pdf" target="_blank" rel="noopener">View Menu</a>
+      </article>
+
+      <article class="menu-tile reveal">
+        <span class="ring" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M6 21h12M9 21v-3M15 21v-3M5.5 11.5a6.5 6.5 0 0113 0c0 1-.6 1.5-1.5 1.5h-10c-.9 0-1.5-.5-1.5-1.5z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 7.5c0-1 .8-2 2-2.2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </span>
+        <h3>Happy Hour</h3>
+        <p>Unwind with special pricing on select drinks and bites in a vibrant, social atmosphere perfect for early evenings.</p>
+        <a class="btn btn-gold" href="#">View Menu</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============================ NEWSLETTER BAND ============================ -->
+  <section class="news-band" aria-labelledby="nb-h">
+    <div class="media">
+      <img src="assets/final-cta.jpg" alt="Elegantly set Fuego Steakhouse & Bar dining room with red florals and gold chandeliers">
+    </div>
+    <div class="inner">
+      <p class="script-label">Contact Us</p>
+      <h2 id="nb-h">Subscribe To Our Newsletter</h2>
+      <p>Be the first to hear about upcoming events, exclusive offers, special menus, and unforgettable nightlife experiences. Join our mailing list and never miss a moment at Fuego Steakhouse &amp; Bar.</p>
+      <a class="btn btn-gold" href="#newsletter-foot">Subscribe Now</a>
+    </div>
+  </section>
+</main>
+
+<!-- ============================ FOOTER ============================ -->
+<footer class="footer" id="contact">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand brand-foot" href="index.html" aria-label="Fuego Steakhouse & Bar home">
+          <img class="brand-logo" src="assets/fuego-logo.png" alt="Fuego Steakhouse & Bar" width="200" height="200">
+        </a>
+        <address class="foot-contact" style="font-style:normal">
+          <span class="row"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-5.5 7-11a7 7 0 10-14 0c0 5.5 7 11 7 11z" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.5"/></svg>8800 Tonnelle Avenue<br>North Bergen, NJ 07047</span>
+          <a class="row" href="tel:+12017244662"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4h4l1.5 4.5L8 10a12 12 0 006 6l1.5-2.5L20 15v4a1 1 0 01-1 1A15 15 0 014 5a1 1 0 011-1z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>(201) 724-4662</a>
+          <a class="row" href="mailto:info@fuegosteakhouse.com"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M4 6l8 6 8-6" stroke="currentColor" stroke-width="1.5"/></svg>info@fuegosteakhouse.com</a>
+        </address>
+        <div class="socials">
+          <a href="#" aria-label="Fuego Steakhouse & Bar on Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 22v-8h3l.5-3.5H13V8.4c0-1 .3-1.7 1.8-1.7H17V3.6c-.4-.05-1.5-.15-2.7-.15-2.7 0-4.5 1.6-4.5 4.6v2.45H7V14h2.8v8z"/></svg></a>
+          <a href="#" aria-label="Fuego Steakhouse & Bar on Instagram"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/><circle cx="17" cy="7" r="1.2" fill="currentColor"/></svg></a>
+          <a href="#" aria-label="Fuego Steakhouse & Bar on TripAdvisor"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="7.5" cy="13" r="3" stroke="currentColor" stroke-width="1.5"/><circle cx="16.5" cy="13" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M7.5 10c2-2 7-2 9 0M3 11l2-2M21 11l-2-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+        </div>
+      </div>
+
+      <nav aria-label="Quick links">
+        <h4>Quick Links</h4>
+        <ul class="foot-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="menus.html">Menus</a></li>
+          <li><a href="index.html#entertainment">Entertainment</a></li>
+          <li><a href="index.html#private-events">Private Events</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Menu links">
+        <h4>Menus</h4>
+        <ul class="foot-links">
+          <li><a href="assets/dinner-menu.pdf" target="_blank" rel="noopener">Dinner Menu</a></li>
+          <li><a href="assets/brunch-menu.pdf" target="_blank" rel="noopener">Brunch Menu</a></li>
+          <li><a href="menus.html">Happy Hour Menu</a></li>
+          <li><a href="gift-cards.html">Gift Cards &amp; Rewards</a></li>
+        </ul>
+      </nav>
+
+      <div class="hours">
+        <h4>Hours of Operation</h4>
+        <div class="row"><b>Monday – Thursday</b><span>11:30 AM – 11:00 PM</span></div>
+        <div class="row"><b>Friday – Saturday</b><span>11:30 AM – 12:00 AM</span></div>
+        <div class="row"><b>Sunday</b><span>10:00 AM – 10:00 PM</span></div>
+        <div class="row"><b>Brunch Served Daily</b><span>10:00 AM – 3:00 PM</span></div>
+      </div>
+
+      <div class="newsletter" id="newsletter-foot">
+        <h4>Stay Connected</h4>
+        <p>Get updates on events, specials and more.</p>
+        <form class="news-form" id="newsForm" novalidate>
+          <label for="newsEmail">Email address</label>
+          <input type="email" id="newsEmail" name="email" placeholder="Enter your email" required autocomplete="email">
+          <span class="msg" id="newsMsg" role="status" aria-live="polite"></span>
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span class="copy">© 2026 Fuego Steakhouse & Bar. All Rights Reserved.</span>
+      <nav class="legal" aria-label="Legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="gallery.html">Accessibility</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================ RESERVE MODAL ============================ -->
+<div class="modal-scrim" id="modalScrim" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+  <div class="modal" role="document">
+    <div class="modal-top">
+      <button class="modal-close" id="modalClose" aria-label="Close reservation form">&times;</button>
+      <p class="eyebrow"><span class="hair"></span><span id="modalEyebrow">Reservations</span></p>
+      <h3 id="modalTitle">Reserve a Table</h3>
+      <p id="modalSub">Forged by fire, set for you. Tell us when and we'll handle the rest.</p>
+    </div>
+    <form class="modal-body" id="reserveForm" novalidate>
+      <div class="field">
+        <label for="rName">Full Name</label>
+        <input type="text" id="rName" name="name" required autocomplete="name" placeholder="Your name">
+      </div>
+      <div class="field-2">
+        <div class="field">
+          <label for="rEmail">Email</label>
+          <input type="email" id="rEmail" name="email" required autocomplete="email" placeholder="you@email.com">
+        </div>
+        <div class="field">
+          <label for="rPhone">Phone</label>
+          <input type="tel" id="rPhone" name="phone" required autocomplete="tel" placeholder="(201) 000-0000">
+        </div>
+      </div>
+      <div class="field-2">
+        <div class="field">
+          <label for="rDate">Date</label>
+          <input type="date" id="rDate" name="date" required>
+        </div>
+        <div class="field">
+          <label for="rTime">Time</label>
+          <select id="rTime" name="time" required>
+            <option value="">Select a time</option>
+            <option>5:00 PM</option><option>5:30 PM</option><option>6:00 PM</option>
+            <option>6:30 PM</option><option>7:00 PM</option><option>7:30 PM</option>
+            <option>8:00 PM</option><option>8:30 PM</option><option>9:00 PM</option>
+            <option>9:30 PM</option><option>10:00 PM</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label id="partyLabel">Party Size</label>
+        <div class="party-pills" role="group" aria-labelledby="partyLabel" id="partyPills">
+          <button type="button" data-size="1">1</button>
+          <button type="button" data-size="2" class="sel">2</button>
+          <button type="button" data-size="3">3</button>
+          <button type="button" data-size="4">4</button>
+          <button type="button" data-size="5">5</button>
+          <button type="button" data-size="6">6</button>
+          <button type="button" data-size="7+">7+</button>
+        </div>
+      </div>
+      <span class="msg err" id="reserveMsg" role="status" aria-live="polite" style="min-height:0"></span>
+      <button type="submit" class="btn btn-gold" id="reserveSubmit">Confirm Reservation</button>
+    </form>
+    <div class="modal-body modal-success" id="reserveSuccess" hidden>
+      <div class="check"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <h3>Request Received</h3>
+      <p id="successMsg">Thank you — we'll confirm your reservation by phone or email shortly.</p>
+      <button class="btn btn-ghost" id="successDone" style="margin-top:26px">Done</button>
+    </div>
+  </div>
+</div>
+
+<!-- Tweaks panel mount -->
+<div id="tweaks-root"></div>
+
+<script src="image-slot.js"></script>
+<script>
+/* Standalone export: once the bundler has unpacked the inlined PDFs, point the menu links at the blob URLs. No-op on the live site. */
+(function () {
+  var map = { 'assets/dinner-menu.pdf': 'dinnerPdf', 'assets/brunch-menu.pdf': 'brunchPdf' };
+  var tries = 0;
+  function rewrite() {
+    var r = window.__resources;
+    if (r && r.dinnerPdf && r.brunchPdf) {
+      document.querySelectorAll('a[href]').forEach(function (a) {
+        var h = a.getAttribute('href');
+        if (map[h] && r[map[h]]) a.href = r[map[h]];
+      });
+      return;
+    }
+    if (++tries < 100) setTimeout(rewrite, 100);
+  }
+  rewrite();
+})();
+</script>
+<script src="app.js"></script>
+<script src="flames.js"></script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="tweaks-app.jsx"></script>
+</body>
+</html>
