@@ -62,10 +62,12 @@
       track.style.transform = 'translateX(' + (-idx * step) + 'px)';
       track.style.transition = 'transform .5s cubic-bezier(.22,.61,.36,1)';
     }
-    document.getElementById('revNext').addEventListener('click', function () {
+    var nextBtn = document.getElementById('revNext');
+    var prevBtn = document.getElementById('revPrev');
+    if (nextBtn) nextBtn.addEventListener('click', function () {
       idx = Math.min(idx + 1, Math.max(0, total - perView())); update();
     });
-    document.getElementById('revPrev').addEventListener('click', function () {
+    if (prevBtn) prevBtn.addEventListener('click', function () {
       idx = Math.max(idx - 1, 0); update();
     });
     window.addEventListener('resize', update);
