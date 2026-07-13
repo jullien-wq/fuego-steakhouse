@@ -1,29 +1,29 @@
 # Cloudflare Pages redirects — friendly short URLs
 # Format: <from>  <to>  <status>
-# NOTE: destinations use clean (extensionless) URLs. Cloudflare Pages
-# auto-redirects /foo.html -> /foo, so pointing here at /foo.html causes
-# an infinite redirect loop. Always target the clean URL.
 
 # Menus
-/menu              /menus                       301
-/dinner            /assets/dinner-menu.pdf      302
-/dinner-menu       /assets/dinner-menu.pdf      302
-/brunch            /assets/brunch-menu.pdf      302
-/brunch-menu       /assets/brunch-menu.pdf      302
+/menu              /menus.html              301
+/menus             /menus.html              301
+/dinner            /assets/dinner-menu.pdf  302
+/dinner-menu       /assets/dinner-menu.pdf  302
+/brunch            /assets/brunch-menu.pdf  302
+/brunch-menu       /assets/brunch-menu.pdf  302
 
 # Entertainment / events
-/events            /entertainment               301
-/calendar          /entertainment               301
+/events            /entertainment.html      301
+/calendar          /entertainment.html      301
+/entertainment     /entertainment.html      301
 
 # Gallery & gift cards
-/photos            /gallery                     301
-/giftcards         /gift-cards                  301
-/gift              /gift-cards                  301
-/rewards           /gift-cards                  301
+/photos            /gallery.html            301
+/gallery           /gallery.html            301
+/gift-cards        /gift-cards.html         301
+/giftcards         /gift-cards.html         301
+/gift              /gift-cards.html         301
+/rewards           /gift-cards.html         301
 
 # Reservations / contact jump to homepage anchors
-/reserve           /#contact                    301
-/reservations      /#contact                    301
-/contact           /#contact                    301
-/private-events    /#private-events             301
-# dev->prod pipeline test (safe to remove)
+/reserve           /index.html#contact      301
+/reservations      /index.html#contact      301
+/contact           /index.html#contact      301
+/private-events    /index.html#private-events  301
