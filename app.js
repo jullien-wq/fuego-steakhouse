@@ -4,6 +4,31 @@
 (function () {
   'use strict';
 
+  /* ---------- form output: Google Sheet endpoint ----------
+     Paste your Apps Script Web App /exec URL between the quotes.
+     Leave empty to disable sending (forms still work locally). */
+  function SHEET_ENDPOINT() { return 'https://script.google.com/macros/s/AKfycbwN3E1KFTJQ4_x7bZ_ZBMgT1aQCzXAh6GQwT3Y1w7ExqrwA-uv5VOAV8FZ-RPI2NFlURA/exec'; }
+
+  function sendToSheet(formType, fields) {
+    var url = SHEET_ENDPOINT();
+    if (!url) return;
+    var payload = {
+      form: formType,
+      location: 'North Bergen',
+      formId: 'fuego-web',
+      submitted: new Date().toISOString()
+    };
+    Object.keys(fields).forEach(function (k) { payload[k] = fields[k]; });
+    try {
+      fetch(url, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(payload)
+      });
+    } catch (e) {}
+  }
+
   /* ---------- hero video: start + loop from 4s ---------- */
   var hv = document.getElementById('heroVideo');
   if (hv) {
@@ -92,7 +117,9 @@
   var success = document.getElementById('reserveSuccess');
   var lastFocus = null;
 
+  var currentMode = '';
   function openModal(mode) {
+    currentMode = mode === 'event' ? 'event' : '';
     lastFocus = document.activeElement;
     scrim.hidden = false;
     requestAnimationFrame(function () { scrim.classList.add('open'); });
@@ -163,6 +190,15 @@
     if (!date.value) { msg.textContent = 'Please choose a date.'; date.focus(); return; }
     if (!time.value) { msg.textContent = 'Please choose a time.'; time.focus(); return; }
 
+    sendToSheet(currentMode === 'event' ? 'Private Events' : 'Reservations', {
+      name: name.value.trim(),
+      email: email.value.trim(),
+      phone: phone.value.trim(),
+      date: date.value,
+      time: time.value,
+      party: partySize
+    });
+
     form.hidden = true; success.hidden = false;
     document.getElementById('successMsg').textContent =
       'Thank you, ' + name.value.trim().split(' ')[0] + ' — a request for ' + partySize +
@@ -179,6 +215,7 @@
     var v = document.getElementById('newsEmail').value.trim();
     var ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
     if (!ok) { newsMsg.textContent = 'Enter a valid email address.'; newsMsg.className = 'msg err'; return; }
+    sendToSheet('Newsletter', { email: v });
     newsMsg.textContent = "You're on the list — welcome to Fuego.";
     newsMsg.className = 'msg ok';
     news.reset();
