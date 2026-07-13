@@ -285,9 +285,23 @@ body.menu-open .mobile-nav{ opacity:1; visibility:visible; }
 .brunch .lead{ margin-bottom:34px; font-size:17px; }
 
 /* ============================================================
+   COCKTAILS (bar showcase rail)
+   ============================================================ */
+.cocktails{ background:var(--bg-deep); padding-block:var(--pad-section); overflow:hidden; }
+.ck-head{ text-align:center; display:flex; flex-direction:column; align-items:center; gap:22px; margin-bottom:58px; }
+.ck-head .lead{ max-width:52ch; }
+.ck-rail{ display:flex; gap:24px; overflow-x:auto; scroll-snap-type:x mandatory; padding-inline:var(--gutter); padding-bottom:16px; -webkit-overflow-scrolling:touch; scrollbar-width:none; }
+.ck-rail::-webkit-scrollbar{ display:none; }
+.ck-card{ flex:0 0 auto; width:clamp(238px,24vw,320px); aspect-ratio:4/5; margin:0; border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; scroll-snap-align:start; background:var(--bg-card); }
+.ck-card img{ width:100%; height:100%; object-fit:cover; transition:transform .9s var(--ease); }
+.ck-card:hover img{ transform:scale(1.05); }
+
+/* ============================================================
    PRIVATE EVENTS + MENU PREVIEW (combined row)
    ============================================================ */
 .events-menus{ background:var(--bg-deep); padding-block:var(--pad-section); }
+.events-atmo{ max-width:var(--maxw); margin:0 auto clamp(56px,7vw,92px); padding-inline:var(--gutter); }
+.events-atmo img{ width:100%; height:clamp(320px,40vw,520px); object-fit:cover; object-position:center 45%; border:1px solid var(--line); border-radius:var(--radius); display:block; }
 .em-grid{ display:grid; grid-template-columns:.86fr 1.14fr; gap:clamp(40px,6vw,90px); align-items:center; }
 .private h2{ margin-bottom:24px; }
 .private .lead{ margin-bottom:34px; max-width:40ch; }
@@ -323,8 +337,8 @@ body.menu-open .mobile-nav{ opacity:1; visibility:visible; }
 .stars{ display:inline-flex; gap:3px; color:var(--gold); }
 .stars svg{ width:17px; height:17px; }
 
-.review-track{ display:grid; grid-auto-flow:column; grid-auto-columns:minmax(260px,1fr); gap:30px; flex:1; overflow:hidden; }
-.review{ display:flex; flex-direction:column; gap:14px; padding-left:6px; }
+.review-track{ display:grid; grid-template-columns:repeat(3,1fr); gap:36px; flex:1; min-width:0; }
+.review{ display:flex; flex-direction:column; gap:14px; padding-left:6px; min-width:0; }
 .review .quote{ font-family:var(--font-display); font-size:40px; line-height:.4; color:var(--gold); opacity:.6; }
 .review .body{ font-size:15.5px; color:var(--text-dim); line-height:1.6; }
 .review .who{ font-size:13px; font-weight:700; letter-spacing:.05em; color:var(--text); margin-top:auto; }
@@ -433,7 +447,7 @@ body.menu-open .mobile-nav{ opacity:1; visibility:visible; }
   .footer-grid{ grid-template-columns:1fr 1fr; gap:40px; }
   .review-rail{ flex-direction:column; }
   .google-card{ width:100%; border-right:none; border-bottom:1px solid var(--line-soft); padding:0 0 26px; flex-direction:row; justify-content:flex-start; gap:24px; text-align:left; }
-  .review-track{ grid-auto-columns:minmax(80%,1fr); }
+  .review-track{ grid-template-columns:1fr; gap:28px; }
 }
 @media (max-width:560px){
   body{ font-size:16px; }

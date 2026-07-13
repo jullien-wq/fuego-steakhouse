@@ -1,29 +1,22 @@
-# Cloudflare Pages redirects — friendly short URLs
-# Format: <from>  <to>  <status>
+# Cloudflare Pages redirects — old Wix URLs -> new clean URLs
+# Place this file at the build output root as "_redirects".
+# Cloudflare Pages already serves extensionless URLs (e.g. /menus for menus.html)
+# and 308-redirects /menus.html -> /menus automatically, so only the OLD paths
+# that changed need rules here. 301 = permanent (preserves SEO).
 
-# Menus
-/menu              /menus.html              301
-/menus             /menus.html              301
-/dinner            /assets/dinner-menu.pdf  302
-/dinner-menu       /assets/dinner-menu.pdf  302
-/brunch            /assets/brunch-menu.pdf  302
-/brunch-menu       /assets/brunch-menu.pdf  302
+# --- Renamed / moved pages ---
+/private-events        /large-events        301
+/events                /entertainment       301
+/reviews-gallery       /gallery             301
+/gift-cards-rewards    /gift-cards          301
 
-# Entertainment / events
-/events            /entertainment.html      301
-/calendar          /entertainment.html      301
-/entertainment     /entertainment.html      301
+# --- Sections / actions now on the home page ---
+/contact               /#contact            301
+/reservations          /#reserve            301
 
-# Gallery & gift cards
-/photos            /gallery.html            301
-/gallery           /gallery.html            301
-/gift-cards        /gift-cards.html         301
-/giftcards         /gift-cards.html         301
-/gift              /gift-cards.html         301
-/rewards           /gift-cards.html         301
-
-# Reservations / contact jump to homepage anchors
-/reserve           /index.html#contact      301
-/reservations      /index.html#contact      301
-/contact           /index.html#contact      301
-/private-events    /index.html#private-events  301
+# --- Old pages with no direct replacement -> home (avoid 404s) ---
+/about-us              /                    301
+/careers               /                    301
+/thank-you             /                    301
+/online-orering        /                    301
+/online-ordering       /                    301
