@@ -117,6 +117,7 @@
   var success = document.getElementById('reserveSuccess');
   var lastFocus = null;
 
+
   var currentMode = '';
   function openModal(mode) {
     currentMode = mode === 'event' ? 'event' : '';
@@ -124,18 +125,11 @@
     scrim.hidden = false;
     requestAnimationFrame(function () { scrim.classList.add('open'); });
     document.body.style.overflow = 'hidden';
-    form.hidden = false; success.hidden = true;
-    var ev = mode === 'event';
-    document.getElementById('modalEyebrow').textContent = ev ? 'Private Events' : 'Reservations';
-    document.getElementById('modalTitle').textContent = ev ? 'Book a Private Event' : 'Reserve a Table';
-    document.getElementById('modalSub').textContent = ev
-      ? 'Tell us about your celebration and our events team will reach out to craft it.'
-      : "Forged by fire, set for you. Tell us when and we'll handle the rest.";
-    document.getElementById('partyLabel').textContent = ev ? 'Estimated Guests' : 'Party Size';
-    document.getElementById('reserveSubmit').textContent = ev ? 'Request Event' : 'Confirm Reservation';
-    var dateInput = document.getElementById('rDate');
-    dateInput.min = new Date().toISOString().split('T')[0];
-    setTimeout(function () { document.getElementById('rName').focus(); }, 120);
+    if (success) success.remove();
+    if (form) form.remove();
+    if (otWrap) otWrap.hidden = false;
+    var mt = scrim.querySelector('.modal-top');
+    if (mt) mt.querySelectorAll('.eyebrow, #modalTitle, #modalSub').forEach(function (el) { el.remove(); });
   }
   function closeModal() {
     scrim.classList.remove('open');
@@ -144,11 +138,25 @@
     if (lastFocus) lastFocus.focus();
   }
 
+  /* OpenTable widget injected into the reserve modal (opens in-page) */
+  var otWrap = document.getElementById('otWidget');
+  if (!otWrap && form) {
+    otWrap = document.createElement('div');
+    otWrap.id = 'otWidget';
+    otWrap.className = 'modal-body ot-widget';
+    otWrap.hidden = true;
+    form.parentNode.insertBefore(otWrap, form);
+    var otScript = document.createElement('script');
+    otScript.type = 'text/javascript';
+    otScript.src = '//www.opentable.com/widget/reservation/loader?rid=1473520&type=standard&theme=tall&color=3&dark=true&iframe=true&domain=com&lang=en-US&newtab=false&ot_source=Restaurant%20website&cfe=true';
+    otWrap.appendChild(otScript);
+  }
   document.querySelectorAll('[data-reserve]').forEach(function (b) {
-    b.addEventListener('click', function () { openModal(b.getAttribute('data-mode')); });
+    b.addEventListener('click', function (e) { e.preventDefault(); openModal(b.getAttribute('data-mode')); });
   });
   document.getElementById('modalClose').addEventListener('click', closeModal);
-  document.getElementById('successDone').addEventListener('click', closeModal);
+  var successDoneBtn = document.getElementById('successDone');
+  if (successDoneBtn) successDoneBtn.addEventListener('click', closeModal);
   scrim.addEventListener('click', function (e) { if (e.target === scrim) closeModal(); });
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && scrim.classList.contains('open')) closeModal();
@@ -238,4 +246,73 @@
     var top = document.getElementById('top');
     if (top) spy.observe(top);
   }
+
+  /* ---------- menu viewer (in-page PDF modal + keep download) ---------- */
+  (function initMenuViewer() {
+    var scrim = document.createElement('div');
+    scrim.className = 'mv-scrim';
+    scrim.hidden = true;
+    scrim.innerHTML =
+      '<div class="mv" role="dialog" aria-modal="true" aria-label="Menu viewer">' +
+        '<div class="mv-head">' +
+          '<h3 class="mv-title">Menu</h3>' +
+          '<div class="mv-actions">' +
+            '<a class="btn btn-ghost mv-open" target="_blank" rel="noopener"><span class="lbl">Open</span> &#8599;</a>' +
+            '<a class="btn btn-gold mv-dl" download><span class="lbl">Download</span> Menu</a>' +
+            '<button class="mv-close" type="button" aria-label="Close menu">&times;</button>' +
+          '</div>' +
+        '</div>' +
+        '<iframe class="mv-frame" title="Menu preview"></iframe>' +
+      '</div>';
+    document.body.appendChild(scrim);
+
+    var frame = scrim.querySelector('.mv-frame');
+    var titleEl = scrim.querySelector('.mv-title');
+    var openA = scrim.querySelector('.mv-open');
+    var dlA = scrim.querySelector('.mv-dl');
+    var lastMvFocus = null;
+
+    function openViewer(url, label) {
+      lastMvFocus = document.activeElement;
+      titleEl.textContent = label || 'Menu';
+      frame.src = url + (url.indexOf('#') === -1 ? '#view=FitH&toolbar=0' : '');
+      openA.href = url;
+      dlA.href = url;
+      scrim.hidden = false;
+      requestAnimationFrame(function () { scrim.classList.add('open'); });
+      document.body.style.overflow = 'hidden';
+    }
+    function closeViewer() {
+      scrim.classList.remove('open');
+      document.body.style.overflow = '';
+      setTimeout(function () { scrim.hidden = true; frame.src = 'about:blank'; }, 380);
+      if (lastMvFocus) { try { lastMvFocus.focus(); } catch (e) {} }
+    }
+
+    scrim.querySelector('.mv-close').addEventListener('click', closeViewer);
+    scrim.addEventListener('click', function (e) { if (e.target === scrim) closeViewer(); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && scrim.classList.contains('open')) closeViewer();
+    });
+
+    function labelFor(a) {
+      var l = a.getAttribute('data-menu-title');
+      if (l) return l;
+      var h = a.querySelector('h3, h4');
+      if (h && h.textContent.trim()) return h.textContent.trim();
+      l = a.getAttribute('aria-label');
+      if (l) return l.replace(/\s*\(pdf\)/i, '').trim();
+      return (a.textContent || 'Menu').replace(/view menu/i, '').trim() || 'Menu';
+    }
+
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest('a[href]');
+      if (!a) return;
+      var href = a.getAttribute('href') || '';
+      if (a.hasAttribute('data-no-viewer')) return;
+      if (!/\.pdf(\?|#|$)/i.test(href)) return;
+      e.preventDefault();
+      openViewer(a.href, labelFor(a));
+    });
+  })();
 })();

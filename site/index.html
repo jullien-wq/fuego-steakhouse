@@ -15,8 +15,6 @@
 <link rel="stylesheet" href="styles.css">
 <meta name="ext-resource-dependency" content="assets/dinner-menu.pdf" data-resource-id="dinnerPdf">
 <meta name="ext-resource-dependency" content="assets/brunch-menu.pdf" data-resource-id="brunchPdf">
-<meta name="ext-resource-dependency" content="assets/happy-hour-menu.pdf" data-resource-id="happyHourPdf">
-<meta name="ext-resource-dependency" content="assets/dessert-specials.pdf" data-resource-id="dessertPdf">
 <script type="application/ld+json">
 {
   "@context":"https://schema.org","@type":"Restaurant","name":"Fuego Steakhouse & Bar",
@@ -24,23 +22,12 @@
   "priceRange":"$$$",
   "address":{"@type":"PostalAddress","streetAddress":"8800 Tonnelle Avenue","addressLocality":"North Bergen","addressRegion":"NJ","postalCode":"07047","addressCountry":"US"},
   "telephone":"+1-201-724-4662","email":"info@fuegosteakhouse.com",
-  "aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"5"}
+  "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.7","reviewCount":"1234"}
 }
 </script>
 </head>
 <body>
 
-<template id="__bundler_thumbnail" data-bg-color="#100c0a">
-  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
-    <rect width="1200" height="800" fill="#100c0a"/>
-    <defs><linearGradient id="tfl" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#b3220c"/><stop offset=".45" stop-color="#ef6a1c"/><stop offset="1" stop-color="#ffb43a"/></linearGradient></defs>
-    <g transform="translate(600 330) scale(7)">
-      <path fill="url(#tfl)" transform="translate(-19 -21)" d="M18.6.5c1.7 6.2-2.4 9.1-5.4 12.6C9.6 17 6 20.6 6 26.6 6 34.6 11.9 41 19 41s12.6-5.8 12.6-13.2c0-4.6-2.3-7.9-4.8-10.9.5 3-1 5-3.1 6.2 1.2-5.2-1.3-9.6-5.1-13C16.9 7.7 17 4 18.6.5Z"/>
-    </g>
-    <text x="600" y="600" text-anchor="middle" font-family="Georgia, serif" font-size="84" letter-spacing="6" fill="#f3ece1">FUEGO</text>
-    <text x="600" y="660" text-anchor="middle" font-family="Arial, sans-serif" font-size="30" letter-spacing="20" fill="#c89a52">STEAKHOUSE</text>
-  </svg>
-</template>
 <header class="site-header" id="header">
   <div class="wrap header-inner">
     <a class="brand" href="index.html" aria-label="Fuego Steakhouse & Bar home">
@@ -59,7 +46,7 @@
         </div>
       </div>
       <a href="#entertainment">WEEKLY EVENTS</a>
-      <a href="large-events.html">LARGE EVENTS</a>
+      <a href="#private-events">LARGE EVENTS</a>
       <a href="gallery.html">Gallery</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -80,7 +67,7 @@
     <a href="gift-cards.html" data-mclose>Gift Cards &amp; Rewards</a>
   </div>
   <a href="#entertainment" data-mclose>Weekly Events</a>
-  <a href="large-events.html" data-mclose>Large Events</a>
+  <a href="#private-events" data-mclose>Large Events</a>
   <a href="gallery.html" data-mclose>Gallery</a>
   <a href="#contact" data-mclose>Contact</a>
   <button class="btn btn-gold" data-reserve data-mclose>Reserve a Table</button>
@@ -157,7 +144,7 @@
 
   <!-- ============================ BRUNCH ============================ -->
   <section class="brunch" aria-labelledby="brunch-h">
-    <img id="brunch-plate" src="assets/photos/fuego-salad.jpg" alt="Fuego grilled chicken salad with avocado, mixed greens, red onion and berry compote on a branded Fuego plate">
+    <img id="brunch-plate" src="assets/slot-brunch-plate.webp" alt="Avocado toast with poached egg, feta and home fries with fresh orange juice">
     <div class="copy reveal">
       <p class="eyebrow"><span class="hair"></span>Served Daily</p>
       <h2 id="brunch-h">Not Breakfast.<br>Not Lunch.<br><span class="accent-italic">Brunch.</span></h2>
@@ -167,30 +154,8 @@
     <img id="brunch-room" src="assets/slot-brunch-room.webp" alt="Overhead spread of Fuego brunch dishes — eggs benedict, omelets, salads and cocktails">
   </section>
 
-  <!-- ============================ COCKTAILS ============================ -->
-  <section class="cocktails" aria-labelledby="ck-h">
-    <div class="wrap ck-head reveal">
-      <p class="eyebrow center">From The Bar</p>
-      <h2 id="ck-h">Craft Cocktails <span class="accent-italic">Worth The Trip</span></h2>
-      <p class="lead">Every pour is theater — smoke, citrus, and house infusions served in vessels as unforgettable as the drinks themselves.</p>
-    </div>
-    <div class="ck-rail" role="list">
-      <figure class="ck-card" role="listitem"><img src="assets/photos/DSC00096.jpg" alt="Smoked citrus cocktail served under a glass cloche" loading="lazy"></figure>
-      <figure class="ck-card" role="listitem"><img src="assets/photos/DSC00011.jpg" alt="Cucumber cooler over ice with a veil of dry-ice mist" loading="lazy"></figure>
-      <figure class="ck-card" role="listitem"><img src="assets/photos/DSC00114.jpg" alt="Lychee martini with a silken foam top in a gold coupe" loading="lazy"></figure>
-      <figure class="ck-card" role="listitem"><img src="assets/photos/DSC00180.jpg" alt="Lavender gin sour finished with fresh lavender sprigs" loading="lazy"></figure>
-      <figure class="ck-card" role="listitem"><img src="assets/photos/DSC00166.jpg" alt="Dried-orange whiskey sour poured tableside from a vintage shaker" loading="lazy"></figure>
-      <figure class="ck-card" role="listitem"><img src="assets/photos/DSC00067.jpg" alt="Cucumber highball in a shell glass on a coastal serving tray" loading="lazy"></figure>
-      <figure class="ck-card" role="listitem"><img src="assets/photos/DSC00126.jpg" alt="Signature cocktail in a sculpted ceramic tiki mug" loading="lazy"></figure>
-      <figure class="ck-card" role="listitem"><img src="assets/photos/DSC00090.jpg" alt="Bittersweet spritz with a dried orange wheel among trailing greenery" loading="lazy"></figure>
-    </div>
-  </section>
-
   <!-- ============================ PRIVATE EVENTS + MENUS ============================ -->
   <section class="events-menus" id="private-events" aria-labelledby="pe-h">
-    <figure class="events-atmo reveal">
-      <img src="assets/photos/dining-room.jpg" alt="A full dining room of families and guests celebrating together at Fuego Steakhouse & Bar" loading="lazy">
-    </figure>
     <div class="wrap em-grid">
       <div class="private reveal">
         <p class="eyebrow"><span class="hair"></span>Private Events</p>
@@ -220,8 +185,8 @@
             <div class="overlay"></div>
             <div class="label"><h3>Brunch Menu</h3><span class="text-link">View Menu<svg width="14" height="9" viewBox="0 0 14 9" fill="none" aria-hidden="true"><path d="M1 4.5h11M9 1l3.5 3.5L9 8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
           </a>
-          <a class="menu-card" href="assets/happy-hour-menu.pdf" target="_blank" rel="noopener" aria-label="Happy Hour menu (PDF)">
-            <img id="menu-happyhour" src="assets/photos/DSC00163.jpg" alt="Happy hour cocktails and bites">
+          <a class="menu-card" href="menus.html" aria-label="Happy Hour menu">
+            <img id="menu-happyhour" src="assets/slot-menu-happyhour.webp" alt="Happy hour cocktails and bites">
             <div class="overlay"></div>
             <div class="label"><h3>Happy Hour Menu</h3><span class="text-link">View Menu<svg width="14" height="9" viewBox="0 0 14 9" fill="none" aria-hidden="true"><path d="M1 4.5h11M9 1l3.5 3.5L9 8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
           </a>
@@ -236,32 +201,40 @@
       <div class="reviews-head">
         <h2 id="rev-h">Loved By <span class="accent-italic">Our Guests</span></h2>
       </div>
-      <div>
+      <div style="position:relative">
+        <button class="review-nav prev" id="revPrev" aria-label="Previous reviews"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 2L4 8l6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="review-nav next" id="revNext" aria-label="Next reviews"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 2l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         <div class="review-rail">
           <div class="google-card">
             <span class="glogo"><span class="b">G</span><span class="r">o</span><span class="y">o</span><span class="b">g</span><span class="g">l</span><span class="r">e</span></span>
-            <span class="rating">5.0</span>
+            <span class="rating">4.7</span>
             <span class="stars" aria-hidden="true"></span>
-            <span class="count">5+ Reviews</span>
+            <span class="count">1,234+ Reviews</span>
           </div>
           <div class="review-track" id="reviewTrack">
-            <figure class="review" style="width: 200px">
+            <figure class="review">
               <span class="quote" aria-hidden="true">&rdquo;</span>
               <span class="stars" data-stars aria-label="5 out of 5 stars"></span>
-              <blockquote class="body" style="width: 135px; margin: 16px 0">Hands down the best steakhouse in North Bergen. The food, service, and ambiance are simply unmatched.</blockquote>
+              <blockquote class="body">Fuego Steakhouse & Bar is hands down the best steakhouse in North Bergen. The food, service, and ambiance are unmatched!</blockquote>
               <figcaption class="who">Michael R.</figcaption>
             </figure>
-            <figure class="review" style="width: 200px">
+            <figure class="review">
               <span class="quote" aria-hidden="true">&rdquo;</span>
               <span class="stars" data-stars aria-label="5 out of 5 stars"></span>
-              <blockquote class="body" style="width: 135px; margin: 16px 0">The brunch is amazing and the energy at night is unbelievable. Our new favorite spot for any occasion.</blockquote>
+              <blockquote class="body">The brunch is amazing and the energy at night is unbelievable. Our new favorite spot for any occasion.</blockquote>
               <figcaption class="who">Jessica L.</figcaption>
             </figure>
-            <figure class="review" style="width: 200px">
+            <figure class="review">
               <span class="quote" aria-hidden="true">&rdquo;</span>
               <span class="stars" data-stars aria-label="5 out of 5 stars"></span>
-              <blockquote class="body" style="width: 135px; margin: 16px 0; text-align: left">We hosted a private event for 50 guests and everything was perfect. Highly recommend Fuego!</blockquote>
+              <blockquote class="body">We hosted a private event for 50 guests and everything was perfect. Highly recommend Fuego!</blockquote>
               <figcaption class="who">Carlos M.</figcaption>
+            </figure>
+            <figure class="review">
+              <span class="quote" aria-hidden="true">&rdquo;</span>
+              <span class="stars" data-stars aria-label="5 out of 5 stars"></span>
+              <blockquote class="body">The tomahawk presentation is a show in itself. Cocktails were creative and the live music made the night.</blockquote>
+              <figcaption class="who">Danielle P.</figcaption>
             </figure>
           </div>
         </div>
@@ -313,7 +286,7 @@
           <li><a href="#top">Home</a></li>
           <li><a href="menus.html">Menus</a></li>
           <li><a href="#entertainment">Entertainment</a></li>
-          <li><a href="large-events.html">Private &amp; Large Events</a></li>
+          <li><a href="#private-events">Private Events</a></li>
           <li><a href="gallery.html">Gallery</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
@@ -324,8 +297,7 @@
         <ul class="foot-links">
           <li><a href="assets/dinner-menu.pdf" target="_blank" rel="noopener">Dinner Menu</a></li>
           <li><a href="assets/brunch-menu.pdf" target="_blank" rel="noopener">Brunch Menu</a></li>
-          <li><a href="assets/happy-hour-menu.pdf" target="_blank" rel="noopener">Happy Hour Menu</a></li>
-          <li><a href="assets/dessert-specials.pdf" target="_blank" rel="noopener">Dessert &amp; Specials</a></li>
+          <li><a href="menus.html">Happy Hour Menu</a></li>
         </ul>
       </nav>
 
@@ -431,7 +403,7 @@
 <script>
 /* Standalone export: once the bundler unpacks the inlined PDFs, point the menu links at the blob URLs. No-op on the live site. */
 (function () {
-  var map = { 'assets/dinner-menu.pdf': 'dinnerPdf', 'assets/brunch-menu.pdf': 'brunchPdf', 'assets/happy-hour-menu.pdf': 'happyHourPdf', 'assets/dessert-specials.pdf': 'dessertPdf' };
+  var map = { 'assets/dinner-menu.pdf': 'dinnerPdf', 'assets/brunch-menu.pdf': 'brunchPdf' };
   var tries = 0;
   function rewrite() {
     var r = window.__resources;
