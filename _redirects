@@ -1,22 +1,24 @@
-# Cloudflare Pages redirects — old Wix URLs -> new clean URLs
+# Cloudflare Pages redirects — old CH Steakhouse (Wix) URLs -> new site
 # Place this file at the build output root as "_redirects".
-# Cloudflare Pages already serves extensionless URLs (e.g. /menus for menus.html)
-# and 308-redirects /menus.html -> /menus automatically, so only the OLD paths
-# that changed need rules here. 301 = permanent (preserves SEO).
+# Cloudflare Pages serves extensionless URLs (e.g. /menus for menus.html) and
+# 308-redirects /menus.html -> /menus automatically, so pages that kept their
+# slug (/, /menus, /contact) need NO rule and resolve directly.
+# 301 = permanent (preserves SEO). Rules are evaluated top-to-bottom.
 
-# --- Renamed / moved pages ---
+# --- Renamed / moved pages (old slug -> new slug) ---
 /private-events        /large-events        301
 /events                /entertainment       301
 /reviews-gallery       /gallery             301
 /gift-cards-rewards    /gift-cards          301
 
-# --- Sections / actions now on the home page ---
-/contact               /#contact            301
-/reservations          /#reserve            301
+# --- Reservations: no standalone page; handled via booking on the home page ---
+/reservations          /                    301
+
+# --- Online ordering now handled by Toast (external) ---
+/online-ordering       https://order.toasttab.com/online/chsteakhouse.com   301
+/online-orering        https://order.toasttab.com/online/chsteakhouse.com   301
 
 # --- Old pages with no direct replacement -> home (avoid 404s) ---
 /about-us              /                    301
 /careers               /                    301
 /thank-you             /                    301
-/online-orering        /                    301
-/online-ordering       /                    301

@@ -57,10 +57,10 @@
   function toggleMenu(force) {
     var open = force !== undefined ? force : !document.body.classList.contains('menu-open');
     document.body.classList.toggle('menu-open', open);
-    burger.setAttribute('aria-expanded', String(open));
+    if (burger) burger.setAttribute('aria-expanded', String(open));
     document.body.style.overflow = open ? 'hidden' : '';
   }
-  burger.addEventListener('click', function () { toggleMenu(); });
+  if (burger) burger.addEventListener('click', function () { toggleMenu(); });
   document.querySelectorAll('[data-mclose]').forEach(function (el) {
     el.addEventListener('click', function () { toggleMenu(false); });
   });
@@ -117,6 +117,7 @@
   var success = document.getElementById('reserveSuccess');
   var lastFocus = null;
 
+  if (scrim) {
 
   var modalEl = scrim.querySelector('.modal');
   var modalTop = scrim.querySelector('.modal-top');
@@ -236,10 +237,12 @@
     document.getElementById('successDone').focus();
   });
 
+  } /* end reserve modal (only when #modalScrim present) */
+
   /* ---------- newsletter ---------- */
   var news = document.getElementById('newsForm');
   var newsMsg = document.getElementById('newsMsg');
-  news.addEventListener('submit', function (e) {
+  if (news) news.addEventListener('submit', function (e) {
     e.preventDefault();
     var v = document.getElementById('newsEmail').value.trim();
     var ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
@@ -278,7 +281,7 @@
         '<div class="mv-head">' +
           '<h3 class="mv-title">Menu</h3>' +
           '<div class="mv-actions">' +
-            '<a class="btn btn-gold mv-dl" download><span class="lbl">Download</span> Menu</a>' +
+            '<a class="btn btn-gold mv-dl" download data-no-viewer><span class="lbl">Download</span> Menu</a>' +
             '<button class="mv-close" type="button" aria-label="Close menu">&times;</button>' +
           '</div>' +
         '</div>' +
