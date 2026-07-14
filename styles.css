@@ -425,6 +425,8 @@ body.menu-open .mobile-nav{ opacity:1; visibility:visible; }
 .footer-bottom .copy{ font-size:13px; color:var(--text-mute); }
 .footer-bottom .legal{ display:flex; gap:24px; }
 .footer-bottom .legal a{ font-size:13px; color:var(--text-mute); } .footer-bottom .legal a:hover{ color:var(--text-dim); }
+.footer-bottom .credit{ font-size:13px; color:var(--text-mute); }
+.footer-bottom .credit a{ color:var(--gold); text-decoration:none; } .footer-bottom .credit a:hover{ color:var(--gold-soft); }
 
 /* ============================================================
    RESERVE MODAL
