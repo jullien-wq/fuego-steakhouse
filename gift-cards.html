@@ -41,9 +41,9 @@
   .gr-copy .btn-row{ justify-content:center; }
 
   .media-pair{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
-  .media-pair image-slot{ width:100%; height:clamp(320px,36vw,500px); aspect-ratio:3/4; border-radius:var(--radius); overflow:hidden; }
-  .media-pair.stagger image-slot:nth-child(1){ transform:translateY(-14px); }
-  .media-pair.stagger image-slot:nth-child(2){ transform:translateY(14px); }
+  .media-pair image-slot, .media-pair img{ width:100%; height:clamp(320px,36vw,500px); aspect-ratio:3/4; object-fit:cover; border-radius:var(--radius); overflow:hidden; }
+  .media-pair.stagger image-slot:nth-child(1), .media-pair.stagger img:nth-child(1){ transform:translateY(-14px); }
+  .media-pair.stagger image-slot:nth-child(2), .media-pair.stagger img:nth-child(2){ transform:translateY(14px); }
 
   /* newsletter band */
   .news-band{ position:relative; text-align:center; overflow:hidden; }
@@ -60,7 +60,7 @@
     .gr-grid{ grid-template-columns:1fr; gap:46px; }
     .gr-section .media-pair{ order:-1; }
     .gr-section.alt .media-pair{ order:0; }
-    .media-pair.stagger image-slot{ transform:none; }
+    .media-pair.stagger image-slot, .media-pair.stagger img{ transform:none; }
   }
   @media (max-width:560px){
     .media-pair{ gap:12px; }
@@ -90,7 +90,7 @@
           <svg width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
         </a>
         <div class="dropdown" role="menu" aria-label="Menus submenu">
-          <a href="#" role="menuitem">Order Online</a>
+          <a href="https://order.toasttab.com/online/chsteakhouse.com" role="menuitem" target="_blank" rel="noopener">Order Online</a>
           <a href="gift-cards.html" role="menuitem" class="active">Gift Cards &amp; Rewards</a>
         </div>
       </div>
@@ -112,7 +112,7 @@
   <a href="index.html" data-mclose>Home</a>
   <a href="menus.html" data-mclose>Menus</a>
   <div class="mobile-sub">
-    <a href="#" data-mclose>Order Online</a>
+    <a href="https://order.toasttab.com/online/chsteakhouse.com" data-mclose target="_blank" rel="noopener">Order Online</a>
     <a href="gift-cards.html" data-mclose>Gift Cards &amp; Rewards</a>
   </div>
   <a href="index.html#entertainment" data-mclose>Weekly Events</a>
@@ -139,16 +139,16 @@
   <section class="gr-section" aria-labelledby="gc-h">
     <div class="wrap gr-grid">
       <div class="media-pair stagger reveal">
-        <image-slot id="gc-img-1" fit="cover" src="assets/gc-celebrate.jpg" placeholder="Guest celebrating" alt="Guest celebrating at Fuego Steakhouse & Bar"></image-slot>
-        <image-slot id="gc-img-2" fit="cover" src="assets/gc-bar.jpg" placeholder="Bar & dining scene" alt="Lively bar and dining scene at Fuego Steakhouse & Bar"></image-slot>
+        <img id="gc-img-1" src="assets/gc-celebrate.jpg" alt="Guest celebrating at Fuego Steakhouse & Bar" loading="lazy">
+        <img id="gc-img-2" src="assets/gc-bar.jpg" alt="Lively bar and dining scene at Fuego Steakhouse & Bar" loading="lazy">
       </div>
       <div class="gr-copy reveal">
         <p class="script-label">Give the Gift of Fuego</p>
         <h2 id="gc-h">Gift Cards</h2>
         <p class="lead">Treat someone special to an unforgettable dining experience at Fuego Steakhouse &amp; Bar. Purchase eGift cards easily online and let your loved ones enjoy premium steaks, handcrafted cocktails, and a vibrant atmosphere.</p>
         <div class="btn-row">
-          <a class="btn btn-gold" href="#">Buy Gift Card</a>
-          <a class="btn btn-ghost" href="#">Check Gift Card Balance</a>
+          <a class="btn btn-gold" href="https://coachhousenorthbergen.toast.site/gift-cards" target="_blank" rel="noopener">Buy Gift Card</a>
+          <a class="btn btn-ghost" href="https://www.toasttab.com/chsteakhouse.com/findcard" target="_blank" rel="noopener">Check Gift Card Balance</a>
         </div>
       </div>
     </div>
@@ -167,8 +167,8 @@
         </div>
       </div>
       <div class="media-pair stagger reveal">
-        <image-slot id="rw-img-1" fit="cover" src="assets/gc-couple.jpg" placeholder="Guests dressed up" alt="Guests dressed up for an event at Fuego Steakhouse & Bar"></image-slot>
-        <image-slot id="rw-img-2" fit="cover" src="assets/gc-group.jpg" placeholder="Group celebrating" alt="Group celebrating at Fuego Steakhouse & Bar"></image-slot>
+        <img id="rw-img-1" src="assets/gc-couple.jpg" alt="Guests dressed up for an event at Fuego Steakhouse & Bar" loading="lazy">
+        <img id="rw-img-2" src="assets/gc-group.jpg" alt="Group celebrating at Fuego Steakhouse & Bar" loading="lazy">
       </div>
     </div>
   </section>
@@ -252,11 +252,7 @@
     <div class="footer-bottom">
       <span class="copy">© 2026 Fuego Steakhouse & Bar. All Rights Reserved.</span>
       <span class="credit">Designed by <a href="https://www.smartmarketingg.com/" target="_blank" rel="noopener">Smart Marketing</a></span>
-      <nav class="legal" aria-label="Legal">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Service</a>
-        <a href="gallery.html">Accessibility</a>
-      </nav>
+      
     </div>
   </div>
 </footer>

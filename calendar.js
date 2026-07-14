@@ -251,7 +251,8 @@
   });
 
   /* ---------- toolbar add ---------- */
-  document.getElementById('calAdd').addEventListener('click', function () {
+  var calAddBtn = document.getElementById('calAdd');
+  if (calAddBtn) calAddBtn.addEventListener('click', function () {
     var t = new Date();
     openModal('add', null, iso(t.getFullYear(), t.getMonth(), t.getDate()), iso(t.getFullYear(), t.getMonth(), t.getDate()));
   });
