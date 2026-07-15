@@ -17,12 +17,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Libre+Caslon+Display&family=Mulish:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
-<meta name="ext-resource-dependency" content="assets/dinner-menu.pdf" data-resource-id="dinnerPdf">
 <meta name="ext-resource-dependency" content="assets/brunch-menu.pdf" data-resource-id="brunchPdf">
+<meta name="ext-resource-dependency" content="assets/dinner-menu.pdf" data-resource-id="dinnerPdf">
 <meta name="ext-resource-dependency" content="assets/happy-hour-menu.pdf" data-resource-id="happyHourPdf">
 <meta name="ext-resource-dependency" content="assets/dessert-specials.pdf" data-resource-id="dessertPdf">
 <meta name="ext-resource-dependency" content="assets/kids-menu.pdf" data-resource-id="kidsPdf">
-<meta name="ext-resource-dependency" content="assets/ember-menu.png" data-resource-id="emberMenu">
 <style>
   /* ---- Menus page ---- */
   .page-hero{ position:relative; min-height:58vh; display:flex; align-items:center; justify-content:center; text-align:center; overflow:hidden; }
@@ -80,8 +79,8 @@
 {
   "@context":"https://schema.org","@type":"Menu","name":"Fuego Steakhouse & Bar Menus",
   "hasMenuSection":[
-    {"@type":"MenuSection","name":"Dinner Menu"},
     {"@type":"MenuSection","name":"Brunch Menu"},
+    {"@type":"MenuSection","name":"Dinner Menu"},
     {"@type":"MenuSection","name":"Happy Hour"},
     {"@type":"MenuSection","name":"Dessert & Specials"}
   ]
@@ -121,7 +120,7 @@
         </div>
       </div>
       <a href="entertainment.html">Weekly Events</a>
-      <a href="large-events.html">Large Events</a>
+      <a href="large-events.html">Private Events</a>
       <a href="gallery.html">Gallery</a>
       <a href="contact.html">Contact</a>
     </nav>
@@ -142,7 +141,7 @@
     <a href="gift-cards.html" data-mclose>Gift Cards &amp; Rewards</a>
   </div>
   <a href="entertainment.html" data-mclose>Weekly Events</a>
-  <a href="large-events.html" data-mclose>Large Events</a>
+  <a href="large-events.html" data-mclose>Private Events</a>
   <a href="gallery.html" data-mclose>Gallery</a>
   <a href="contact.html" data-mclose>Contact</a>
   <button class="btn btn-gold" data-reserve data-mclose>Reserve a Table</button>
@@ -172,20 +171,20 @@
     <div class="menu-tiles">
       <article class="menu-tile reveal">
         <span class="ring" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M5 3v7a2 2 0 002 2h0a2 2 0 002-2V3M7 12v9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 3c-1.4 0-2.5 1.6-2.5 4s1.1 4 2.5 4M15 3c1.4 0 2.5 1.6 2.5 4s-1.1 4-2.5 4M15 11v10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </span>
-        <h3>Dinner Menu</h3>
-        <p>Indulge in premium steaks, fresh seafood, elevated sides, and chef-driven specialties crafted with quality and precision.</p>
-        <a class="btn btn-gold" href="assets/dinner-menu.pdf" target="_blank" rel="noopener">View Menu</a>
-      </article>
-
-      <article class="menu-tile reveal">
-        <span class="ring" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none"><circle cx="8" cy="7" r="2.4" stroke="currentColor" stroke-width="1.5"/><circle cx="16" cy="7" r="2.4" stroke="currentColor" stroke-width="1.5"/><path d="M3.5 19a4.5 4.5 0 019 0M11.5 19a4.5 4.5 0 019 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
         </span>
         <h3>Brunch Menu</h3>
         <p>Enjoy a refined brunch experience featuring savory favorites, signature dishes, and perfectly paired morning cocktails.</p>
         <a class="btn btn-gold" href="assets/brunch-menu.pdf" target="_blank" rel="noopener">View Menu</a>
+      </article>
+
+      <article class="menu-tile reveal">
+        <span class="ring" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M5 3v7a2 2 0 002 2h0a2 2 0 002-2V3M7 12v9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 3c-1.4 0-2.5 1.6-2.5 4s1.1 4 2.5 4M15 3c1.4 0 2.5 1.6 2.5 4s-1.1 4-2.5 4M15 11v10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <h3>Dinner Menu</h3>
+        <p>Indulge in premium steaks, fresh seafood, elevated sides, and chef-driven specialties crafted with quality and precision.</p>
+        <a class="btn btn-gold" href="assets/dinner-menu.pdf" target="_blank" rel="noopener">View Menu</a>
       </article>
 
       <article class="menu-tile reveal">
@@ -208,15 +207,6 @@
 
       <article class="menu-tile reveal">
         <span class="ring" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l2.1 4.3 4.7.7-3.4 3.3.8 4.7L12 13.9 7.8 16l.8-4.7L5.2 8l4.7-.7L12 3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
-        </span>
-        <h3>The Ember Menu</h3>
-        <p>A three-course prix-fixe experience — family-style firsts, a choice of main, dessert, and unlimited house wine &amp; beer.</p>
-        <a class="btn btn-gold" href="assets/ember-menu.png" target="_blank" rel="noopener">View Menu</a>
-      </article>
-
-      <article class="menu-tile reveal">
-        <span class="ring" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="7" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M5.5 21a6.5 6.5 0 0113 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M18 5.5c1.2 0 2 .9 2 2s-.8 2-2 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
         </span>
         <h3>Kids Menu</h3>
@@ -235,7 +225,7 @@
       <p class="script-label">Contact Us</p>
       <h2 id="nb-h">Subscribe To Our Newsletter</h2>
       <p>Be the first to hear about upcoming events, exclusive offers, special menus, and unforgettable nightlife experiences. Join our mailing list and never miss a moment at Fuego Steakhouse &amp; Bar.</p>
-      <a class="btn btn-gold" href="#newsletter-foot">Subscribe Now</a>
+      <a class="btn btn-gold" href="https://www.toasttab.com/fuegosteaks/marketing-signup" target="_blank" rel="noopener">Subscribe Now</a>
     </div>
   </section>
 </main>
@@ -266,7 +256,7 @@
           <li><a href="index.html">Home</a></li>
           <li><a href="menus.html">Menus</a></li>
           <li><a href="entertainment.html">Entertainment</a></li>
-          <li><a href="large-events.html">Private &amp; Large Events</a></li>
+          <li><a href="large-events.html">Private Events</a></li>
           <li><a href="gallery.html">Gallery</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
@@ -275,11 +265,10 @@
       <nav aria-label="Menu links">
         <h4>Menus</h4>
         <ul class="foot-links">
-          <li><a href="assets/dinner-menu.pdf" target="_blank" rel="noopener">Dinner Menu</a></li>
           <li><a href="assets/brunch-menu.pdf" target="_blank" rel="noopener">Brunch Menu</a></li>
+          <li><a href="assets/dinner-menu.pdf" target="_blank" rel="noopener">Dinner Menu</a></li>
           <li><a href="assets/happy-hour-menu.pdf" target="_blank" rel="noopener">Happy Hour Menu</a></li>
           <li><a href="assets/dessert-specials.pdf" target="_blank" rel="noopener">Dessert &amp; After Dinner</a></li>
-          <li><a href="assets/ember-menu.png" target="_blank" rel="noopener">The Ember Menu</a></li>
           <li><a href="assets/kids-menu.pdf" target="_blank" rel="noopener">Kids Menu</a></li>
           <li><a href="gift-cards.html">Gift Cards &amp; Rewards</a></li>
         </ul>
@@ -287,10 +276,10 @@
 
       <div class="hours">
         <h4>Hours of Operation</h4>
-        <div class="row"><b>Monday – Thursday</b><span>11:30 AM – 11:00 PM</span></div>
-        <div class="row"><b>Friday – Saturday</b><span>11:30 AM – 12:00 AM</span></div>
-        <div class="row"><b>Sunday</b><span>10:00 AM – 10:00 PM</span></div>
-        <div class="row"><b>Brunch Served Daily</b><span>10:00 AM – 3:00 PM</span></div>
+        <div class="row"><b>Monday – Thursday</b><span>11:00 AM – 11:00 PM</span></div>
+        <div class="row"><b>Friday</b><span>11:00 AM – 2:00 AM</span></div>
+        <div class="row"><b>Saturday</b><span>9:00 AM – 2:00 AM</span></div>
+        <div class="row"><b>Sunday</b><span>9:00 AM – 10:00 PM</span></div>
       </div>
 
       <div class="newsletter" id="newsletter-foot">

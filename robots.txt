@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /entertainment
 
 Sitemap: https://www.chsteakhouse.com/sitemap.xml
