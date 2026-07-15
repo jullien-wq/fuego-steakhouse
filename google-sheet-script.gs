@@ -78,6 +78,7 @@ function handleSubmission(data) {
   var res = writeRow(ss, formName, base, fields);
 
   sendEmail(formName, location, base, fields);
+  sendConfirmation(formName, fields);
   return res;
 }
 
@@ -145,6 +146,36 @@ function sendEmail(formName, location, base, fields) {
     }).join('') +
     '</table></div>';
   MailApp.sendEmail({ to: NOTIFY_EMAIL, subject: subject, body: body, htmlBody: html });
+}
+
+/* Auto-reply confirmation to the person who submitted the form.        */
+function sendConfirmation(formName, fields) {
+  var to = fields['Email'];
+  if (!to || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(String(to).trim())) return;
+  var firstName = (String(fields['Full Name'] || '').trim().split(' ')[0]) || 'there';
+
+  var COPY = {
+    'Reservations': { subject: 'We received your reservation request — Fuego Steakhouse', line: "Thank you for your reservation request. Our team will confirm your table by phone or email shortly." },
+    'Private Events': { subject: 'We received your event request — Fuego Steakhouse', line: "Thank you for your interest in hosting with us. Our events team will reach out shortly to plan your celebration." },
+    'Contact': { subject: 'We received your message — Fuego Steakhouse', line: "Thank you for reaching out. A member of our team will get back to you shortly." },
+    'Newsletter': { subject: "You're on the list — Fuego Steakhouse", line: "Thanks for subscribing! You'll be the first to hear about events, specials and more." }
+  };
+  var c = COPY[formName] || { subject: 'Thank you — Fuego Steakhouse', line: "Thank you for contacting us. We'll be in touch shortly." };
+
+  var summaryRows = Object.keys(fields).map(function (k) {
+    return '<tr><td style="border:1px solid #e0d8c8;background:#faf6ee"><b>' + escapeHtml(k) +
+      '</b></td><td style="border:1px solid #e0d8c8">' + escapeHtml(String(fields[k])) + '</td></tr>';
+  }).join('');
+
+  var html = '<div style="font-family:Arial,Helvetica,sans-serif;font-size:15px;color:#1a1207;max-width:560px">' +
+    '<h2 style="color:' + BRAND + ';margin:0 0 6px">Thank you, ' + escapeHtml(firstName) + '.</h2>' +
+    '<p style="margin:0 0 16px;line-height:1.6">' + escapeHtml(c.line) + '</p>' +
+    (summaryRows ? '<p style="margin:0 0 8px;font-weight:bold;color:' + BRAND + '">Your details</p><table cellpadding="6" style="border-collapse:collapse;margin-bottom:18px">' + summaryRows + '</table>' : '') +
+    '<p style="margin:0;line-height:1.6">Fuego Steakhouse &amp; Bar<br>921 John F. Kennedy Blvd, North Bergen, NJ 07047<br>(201) 724-4662</p>' +
+    '</div>';
+  var body = c.line + '\n\nFuego Steakhouse & Bar\n921 John F. Kennedy Blvd, North Bergen, NJ 07047\n(201) 724-4662';
+
+  MailApp.sendEmail({ to: String(to).trim(), subject: c.subject, body: body, htmlBody: html, name: 'Fuego Steakhouse & Bar' });
 }
 
 /* ------------------------------------------------------------------ */

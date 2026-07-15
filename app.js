@@ -33,14 +33,14 @@
   var hv = document.getElementById('heroVideo');
   if (hv) {
     var START = 4;
-    var seekStart = function () { try { if (hv.currentTime < START) hv.currentTime = START; } catch (e) {} };
+    var canSeek = function () { return hv.duration && hv.duration > START + 4; };
+    var seekStart = function () { try { if (canSeek() && hv.currentTime < START) hv.currentTime = START; } catch (e) {} };
     hv.addEventListener('loadedmetadata', seekStart);
     if (hv.readyState >= 1) seekStart();
-    hv.addEventListener('ended', function () { hv.currentTime = START; hv.play().catch(function () {}); });
-    // safety: catch loop wrap on browsers that ignore removed loop attr
-    hv.addEventListener('timeupdate', function () {
-      if (hv.duration && hv.currentTime < START - 0.25 && hv.played.length) hv.currentTime = START;
-    });
+    hv.addEventListener('ended', function () { if (canSeek()) hv.currentTime = START; hv.play().catch(function () {}); });
+    var tryPlay = function () { hv.play().catch(function () {}); };
+    hv.addEventListener('canplay', tryPlay);
+    tryPlay();
   }
 
   /* ---------- sticky header ---------- */
@@ -229,12 +229,7 @@
       party: partySize
     });
 
-    form.hidden = true; success.hidden = false;
-    document.getElementById('successMsg').textContent =
-      'Thank you, ' + name.value.trim().split(' ')[0] + ' — a request for ' + partySize +
-      ' on ' + new Date(date.value + 'T00:00').toLocaleDateString('en-US', { weekday:'long', month:'long', day:'numeric' }) +
-      ' at ' + time.value + ' has been received. We\u2019ll confirm shortly.';
-    document.getElementById('successDone').focus();
+    window.location.href = 'thank-you.html?type=' + (currentMode === 'event' ? 'event' : 'reservation');
   });
 
   } /* end reserve modal (only when #modalScrim present) */
@@ -248,9 +243,7 @@
     var ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
     if (!ok) { newsMsg.textContent = 'Enter a valid email address.'; newsMsg.className = 'msg err'; return; }
     sendToSheet('Newsletter', { email: v });
-    newsMsg.textContent = "You're on the list — welcome to Fuego.";
-    newsMsg.className = 'msg ok';
-    news.reset();
+    window.location.href = 'thank-you.html?type=newsletter';
   });
 
   /* ---------- active nav on scroll ---------- */

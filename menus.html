@@ -21,6 +21,8 @@
 <meta name="ext-resource-dependency" content="assets/brunch-menu.pdf" data-resource-id="brunchPdf">
 <meta name="ext-resource-dependency" content="assets/happy-hour-menu.pdf" data-resource-id="happyHourPdf">
 <meta name="ext-resource-dependency" content="assets/dessert-specials.pdf" data-resource-id="dessertPdf">
+<meta name="ext-resource-dependency" content="assets/kids-menu.pdf" data-resource-id="kidsPdf">
+<meta name="ext-resource-dependency" content="assets/ember-menu.png" data-resource-id="emberMenu">
 <style>
   /* ---- Menus page ---- */
   .page-hero{ position:relative; min-height:58vh; display:flex; align-items:center; justify-content:center; text-align:center; overflow:hidden; }
@@ -114,7 +116,7 @@
           <svg width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
         </a>
         <div class="dropdown" role="menu" aria-label="Menus submenu">
-          <a href="https://order.toasttab.com/online/chsteakhouse.com" role="menuitem" target="_blank" rel="noopener">Order Online</a>
+          <a href="https://order.toasttab.com/online/fuegosteaks" role="menuitem" target="_blank" rel="noopener">Order Online</a>
           <a href="gift-cards.html" role="menuitem">Gift Cards &amp; Rewards</a>
         </div>
       </div>
@@ -136,7 +138,7 @@
   <a href="index.html" data-mclose>Home</a>
   <a href="menus.html" data-mclose>Menus</a>
   <div class="mobile-sub">
-    <a href="https://order.toasttab.com/online/chsteakhouse.com" data-mclose target="_blank" rel="noopener">Order Online</a>
+    <a href="https://order.toasttab.com/online/fuegosteaks" data-mclose target="_blank" rel="noopener">Order Online</a>
     <a href="gift-cards.html" data-mclose>Gift Cards &amp; Rewards</a>
   </div>
   <a href="entertainment.html" data-mclose>Weekly Events</a>
@@ -199,9 +201,27 @@
         <span class="ring" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none"><path d="M4 16h16M5 16c0-4 3-7 7-7s7 3 7 7M9 9V6.5M12 9V6M15 9V6.5M6.5 20h11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </span>
-        <h3>Dessert &amp; Specials</h3>
-        <p>Finish on a high note with house-made desserts and rotating chef specials created to surprise and delight.</p>
+        <h3>Dessert &amp; After Dinner</h3>
+        <p>Finish on a high note with house-made desserts, after-dinner drinks, and rotating chef specials created to surprise and delight.</p>
         <a class="btn btn-gold" href="assets/dessert-specials.pdf" target="_blank" rel="noopener">View Menu</a>
+      </article>
+
+      <article class="menu-tile reveal">
+        <span class="ring" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l2.1 4.3 4.7.7-3.4 3.3.8 4.7L12 13.9 7.8 16l.8-4.7L5.2 8l4.7-.7L12 3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        </span>
+        <h3>The Ember Menu</h3>
+        <p>A three-course prix-fixe experience — family-style firsts, a choice of main, dessert, and unlimited house wine &amp; beer.</p>
+        <a class="btn btn-gold" href="assets/ember-menu.png" target="_blank" rel="noopener">View Menu</a>
+      </article>
+
+      <article class="menu-tile reveal">
+        <span class="ring" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="7" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M5.5 21a6.5 6.5 0 0113 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M18 5.5c1.2 0 2 .9 2 2s-.8 2-2 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </span>
+        <h3>Kids Menu</h3>
+        <p>Little guests eat well too — kid-friendly favorites made with the same care as everything else on our tables.</p>
+        <a class="btn btn-gold" href="assets/kids-menu.pdf" target="_blank" rel="noopener">View Menu</a>
       </article>
     </div>
   </section>
@@ -258,7 +278,9 @@
           <li><a href="assets/dinner-menu.pdf" target="_blank" rel="noopener">Dinner Menu</a></li>
           <li><a href="assets/brunch-menu.pdf" target="_blank" rel="noopener">Brunch Menu</a></li>
           <li><a href="assets/happy-hour-menu.pdf" target="_blank" rel="noopener">Happy Hour Menu</a></li>
-          <li><a href="assets/dessert-specials.pdf" target="_blank" rel="noopener">Dessert &amp; Specials</a></li>
+          <li><a href="assets/dessert-specials.pdf" target="_blank" rel="noopener">Dessert &amp; After Dinner</a></li>
+          <li><a href="assets/ember-menu.png" target="_blank" rel="noopener">The Ember Menu</a></li>
+          <li><a href="assets/kids-menu.pdf" target="_blank" rel="noopener">Kids Menu</a></li>
           <li><a href="gift-cards.html">Gift Cards &amp; Rewards</a></li>
         </ul>
       </nav>
@@ -274,12 +296,7 @@
       <div class="newsletter" id="newsletter-foot">
         <h4>Stay Connected</h4>
         <p>Get updates on events, specials and more.</p>
-        <form class="news-form" id="newsForm" novalidate>
-          <label for="newsEmail">Email address</label>
-          <input type="email" id="newsEmail" name="email" placeholder="Enter your email" required autocomplete="email">
-          <span class="msg" id="newsMsg" role="status" aria-live="polite"></span>
-          <button type="submit">Subscribe</button>
-        </form>
+        <a class="btn btn-gold news-btn" href="https://www.toasttab.com/fuegosteaks/marketing-signup" target="_blank" rel="noopener">Sign Up</a>
       </div>
     </div>
 
@@ -360,7 +377,7 @@
 <script>
 /* Standalone export: once the bundler has unpacked the inlined PDFs, point the menu links at the blob URLs. No-op on the live site. */
 (function () {
-  var map = { 'assets/dinner-menu.pdf': 'dinnerPdf', 'assets/brunch-menu.pdf': 'brunchPdf', 'assets/happy-hour-menu.pdf': 'happyHourPdf', 'assets/dessert-specials.pdf': 'dessertPdf' };
+  var map = { 'assets/dinner-menu.pdf': 'dinnerPdf', 'assets/brunch-menu.pdf': 'brunchPdf', 'assets/happy-hour-menu.pdf': 'happyHourPdf', 'assets/dessert-specials.pdf': 'dessertPdf', 'assets/kids-menu.pdf': 'kidsPdf', 'assets/ember-menu.png': 'emberMenu' };
   var tries = 0;
   function rewrite() {
     var r = window.__resources;

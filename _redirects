@@ -15,8 +15,8 @@
 /reservations          /                    301
 
 # --- Online ordering now handled by Toast (external) ---
-/online-ordering       https://order.toasttab.com/online/chsteakhouse.com   301
-/online-orering        https://order.toasttab.com/online/chsteakhouse.com   301
+/online-ordering       https://order.toasttab.com/online/fuegosteaks   301
+/online-orering        https://order.toasttab.com/online/fuegosteaks   301
 
 # --- Old pages with no direct replacement -> home (avoid 404s) ---
 /about-us              /                    301
