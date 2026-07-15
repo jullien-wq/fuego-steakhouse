@@ -13,8 +13,14 @@
  *   5) Paste that URL into the site (app.js -> SHEET_ENDPOINT).
  **************************************************************************/
 
-/* Where email notifications go. Add more addresses comma-separated. */
-var NOTIFY_EMAIL = 'info@fuegosteakhouse.com';
+/* Where email notifications go, by form type. Add addresses comma-separated. */
+var NOTIFY_EMAIL = 'info@fuegosteaks.com';
+var EVENTS_EMAIL = 'events@fuegosteaks.com';
+
+/* Route staff notifications to the right inbox by form name. */
+function notifyRecipient(formName) {
+  return formName === 'Private Events' ? EVENTS_EMAIL : NOTIFY_EMAIL;
+}
 
 /* Brand color for the header row. */
 var BRAND = '#c89a52';
@@ -124,7 +130,8 @@ function styleHeader(sheet) {
 }
 
 function sendEmail(formName, location, base, fields) {
-  if (!NOTIFY_EMAIL) return;
+  var recipient = notifyRecipient(formName);
+  if (!recipient) return;
   var subject = 'New ' + formName + ' — Fuego Steakhouse' + (location ? ' (' + location + ')' : '');
   var lines = [];
   lines.push(formName + ' submission');
@@ -145,7 +152,7 @@ function sendEmail(formName, location, base, fields) {
         '</b></td><td style="border:1px solid #e0d8c8">' + escapeHtml(String(fields[k])) + '</td></tr>';
     }).join('') +
     '</table></div>';
-  MailApp.sendEmail({ to: NOTIFY_EMAIL, subject: subject, body: body, htmlBody: html });
+  MailApp.sendEmail({ to: recipient, subject: subject, body: body, htmlBody: html });
 }
 
 /* Auto-reply confirmation to the person who submitted the form.        */
