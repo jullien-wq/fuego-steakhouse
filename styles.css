@@ -43,6 +43,8 @@ html{ scroll-behavior:smooth; }
 @media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } }
 
 html{ overflow-x:hidden; }
+/* Weekly Events hidden until launch — hides every link/button to the page */
+a[href="entertainment.html"], a[href$="/entertainment"]{ display:none !important; }
 body{
   margin:0;
   background:var(--bg);
@@ -143,7 +145,7 @@ image-slot{
   backdrop-filter:blur(14px) saturate(120%);
   border-bottom:1px solid var(--line-soft);
 }
-.header-inner{ display:flex; align-items:center; justify-content:space-between; gap:24px; height:84px; position:relative; z-index:2; }
+.header-inner{ display:flex; align-items:center; justify-content:space-between; gap:24px; height:125px; position:relative; z-index:2; }
 
 /* live ember flames along the sticky header's bottom edge (desktop only) */
 .header-fire{
@@ -157,7 +159,7 @@ image-slot{
 @media (max-width:1040px){ .header-fire{ display:none !important; } }
 
 .brand{ display:flex; align-items:center; gap:12px; }
-.brand-logo{ height:120px; width:120px; object-fit:contain; display:block; transition:transform .4s var(--ease); }
+.brand-logo{ height:160px; width:160px; object-fit:contain; display:block; transition:transform .4s var(--ease); }
 .brand:hover .brand-logo{ transform:scale(1.04); }
 .brand-foot .brand-logo{ height:120px; margin:-18px 0 4px -10px; }
 .brand .flame{ width:34px; height:42px; flex:none; }
@@ -479,6 +481,7 @@ body.menu-open .mobile-nav{ opacity:1; visibility:visible; }
    ============================================================ */
 @media (max-width:1040px){
   .nav, .header-cta .btn{ display:none; }
+  .brand-logo{ height:96px; width:96px; }
   .burger{ display:flex; }
   .hero{ min-height:auto; }
   .hero-inner{ padding-top:128px; padding-bottom:96px; }
