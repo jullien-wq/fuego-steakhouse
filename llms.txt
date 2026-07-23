@@ -1,0 +1,12 @@
+# Fuego Steakhouse & Bar
+
+> Upscale steakhouse and cocktail bar at 921 John F. Kennedy Blvd, North Bergen, NJ 07047. Premium steaks and seafood, daily brunch, happy hour, live entertainment, and private events. Phone: (201) 455-6055. Email: info@fuegosteaks.com.
+
+## Pages
+
+- [Home](https://www.fuegosteaks.com/): Overview, reservations, and online ordering via Toast
+- [Menus](https://www.fuegosteaks.com/menus): Dinner, brunch, happy hour, and dessert menus
+- [Private Events](https://www.fuegosteaks.com/large-events): Corporate events, birthdays, engagements, showers, holiday parties; semi-private spaces and full buyouts
+- [Gallery](https://www.fuegosteaks.com/gallery): Photos of the dining room, dishes, and cocktails
+- [Gift Cards & Rewards](https://www.fuegosteaks.com/gift-cards): eGift cards and the Fuego Rewards loyalty program
+- [Contact](https://www.fuegosteaks.com/contact): Address, phone, email, hours, and contact form

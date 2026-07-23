@@ -19,6 +19,6 @@
 /online-orering        https://order.toasttab.com/online/fuegosteaks   301
 
 # --- Old pages with no direct replacement -> home (avoid 404s) ---
+# (/thank-you is a live page again - form confirmations land there)
 /about-us              /                    301
 /careers               /                    301
-/thank-you             /                    301

@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /entertainment
 
-Sitemap: https://www.chsteakhouse.com/sitemap.xml
+Sitemap: https://www.fuegosteaks.com/sitemap.xml

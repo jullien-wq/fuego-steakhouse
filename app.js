@@ -229,7 +229,7 @@
       party: partySize
     });
 
-    window.location.href = 'thank-you.html?type=' + (currentMode === 'event' ? 'event' : 'reservation');
+    window.location.href = '/thank-you?type=' + (currentMode === 'event' ? 'event' : 'reservation');
   });
 
   } /* end reserve modal (only when #modalScrim present) */
@@ -243,7 +243,7 @@
     var ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
     if (!ok) { newsMsg.textContent = 'Enter a valid email address.'; newsMsg.className = 'msg err'; return; }
     sendToSheet('Newsletter', { email: v });
-    window.location.href = 'thank-you.html?type=newsletter';
+    window.location.href = '/thank-you?type=newsletter';
   });
 
   /* ---------- active nav on scroll ---------- */
