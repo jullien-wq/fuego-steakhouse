@@ -3,6 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9W4G1DC2TT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9W4G1DC2TT');
+</script>
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="icon" type="image/png" sizes="512x512" href="assets/favicon-512.png">
 <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon-180.png">
@@ -17,23 +26,89 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Libre+Caslon+Display&family=Mulish:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.min.css">
 <meta name="ext-resource-dependency" content="assets/dinner-menu.pdf" data-resource-id="dinnerPdf">
 <meta name="ext-resource-dependency" content="assets/brunch-menu.pdf" data-resource-id="brunchPdf">
 <meta name="ext-resource-dependency" content="assets/happy-hour-menu.pdf" data-resource-id="happyHourPdf">
 <meta name="ext-resource-dependency" content="assets/dessert-specials.pdf" data-resource-id="dessertPdf">
 <script type="application/ld+json">
 {
-  "@context":"https://schema.org","@type":"Restaurant","name":"Fuego Steakhouse & Bar",
-  "servesCuisine":["Steakhouse","Seafood","Brunch","Cocktails"],
+  "@context":"https://schema.org",
+  "@type":"Restaurant",
+  "@id":"https://www.fuegosteaks.com/#restaurant",
+  "name":"Fuego Steakhouse & Bar",
+  "alternateName":"Fuego Latin Fusion Steakhouse",
+  "url":"https://www.fuegosteaks.com/",
+  "description":"Fuego Steakhouse & Bar is a Latin-fusion steakhouse in North Bergen, NJ serving premium steaks, fresh seafood, weekend brunch, craft cocktails and hosting private events.",
+  "servesCuisine":["Steakhouse","Latin American","Seafood","Brunch","Cocktails"],
   "priceRange":"$$$",
+  "image":"https://www.fuegosteaks.com/assets/fuego-logo.png",
+  "logo":"https://www.fuegosteaks.com/assets/fuego-logo.png",
   "address":{"@type":"PostalAddress","streetAddress":"921 John F. Kennedy Blvd","addressLocality":"North Bergen","addressRegion":"NJ","postalCode":"07047","addressCountry":"US"},
-  "telephone":"+1-201-455-6055","email":"info@fuegosteaks.com",
+  "geo":{"@type":"GeoCoordinates","latitude":40.7987,"longitude":-74.0243},
+  "telephone":"+1-201-455-6055",
+  "email":"info@fuegosteaks.com",
+  "areaServed":["North Bergen NJ","Hudson County NJ","Union City NJ","Weehawken NJ","West New York NJ","Jersey City NJ"],
+  "acceptsReservations":"https://www.opentable.com/r/fuego-steakhouse-and-bar",
+  "hasMenu":"https://www.fuegosteaks.com/menus",
+  "sameAs":[
+    "https://www.facebook.com/fuegosteakhouseandbar",
+    "https://www.instagram.com/fuegolatinfusionsteakhouse/",
+    "https://www.tiktok.com/@fuegolatinfusion"
+  ],
+  "openingHoursSpecification":[
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday"],"opens":"11:00","closes":"23:00"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":"Friday","opens":"11:00","closes":"02:00"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"09:00","closes":"02:00"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":"Sunday","opens":"09:00","closes":"22:00"}
+  ],
   "aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"5"}
 }
 </script>
 </head>
 <body>
+
+<div class="promo-scrim" id="promoScrim" role="dialog" aria-modal="true" aria-label="An Evening of Flamenco, Jazz &amp; Progressive Music — Romero Flamenco Progressive Trio, Friday August 7">
+  <div class="promo-box">
+    <button class="promo-close" id="promoClose" type="button" aria-label="Close announcement">&times;</button>
+    <a class="promo-link" href="https://www.opentable.com/restref/client/?rid=1473520" target="_blank" rel="noopener">
+      <img src="assets/promo-romero.jpg" alt="An Evening of Flamenco, Jazz and Progressive Music — Romero Flamenco Progressive Trio with Cristina Candela, Romero and David Silliman. Friday August 7 at 7:30 PM at Fuego Steakhouse &amp; Bar. Reservations recommended.">
+    </a>
+  </div>
+</div>
+<style>
+.promo-scrim{ position:fixed; inset:0; z-index:200; display:none; align-items:center; justify-content:center; padding:24px; background:rgba(6,4,3,.86); backdrop-filter:blur(6px); opacity:0; transition:opacity .35s var(--ease); }
+.promo-scrim.show{ display:flex; }
+.promo-scrim.open{ opacity:1; }
+.promo-box{ position:relative; max-width:min(560px,92vw); max-height:92vh; transform:translateY(16px) scale(.98); transition:transform .4s var(--ease); }
+.promo-scrim.open .promo-box{ transform:none; }
+.promo-link{ display:block; border:1px solid var(--line); border-radius:8px; overflow:hidden; box-shadow:0 30px 80px rgba(0,0,0,.6); }
+.promo-link img{ display:block; width:100%; height:auto; max-height:88vh; object-fit:contain; }
+.promo-close{ position:absolute; top:-16px; right:-16px; z-index:2; width:44px; height:44px; border-radius:50%; cursor:pointer; border:1px solid var(--gold); background:var(--bg-card); color:var(--gold); font-size:26px; line-height:1; display:grid; place-items:center; transition:background .25s var(--ease), color .25s var(--ease); }
+.promo-close:hover{ background:var(--gold); color:#1a1207; }
+.upcoming{ margin-top:38px; padding-top:34px; border-top:1px solid var(--line-soft); }
+.upcoming .eyebrow{ margin-bottom:18px; }
+.upcoming-flyer{ display:block; max-width:340px; border:1px solid var(--line); border-radius:8px; overflow:hidden; box-shadow:0 18px 44px rgba(0,0,0,.45); transition:transform .4s var(--ease), border-color .4s var(--ease); }
+.upcoming-flyer:hover{ transform:translateY(-4px); border-color:var(--gold); }
+.upcoming-flyer img{ display:block; width:100%; height:auto; }
+@media (max-width:620px){ .promo-close{ top:-14px; right:-8px; width:40px; height:40px; font-size:23px; } }
+</style>
+<script>
+(function(){
+  var scrim=document.getElementById('promoScrim'); if(!scrim) return;
+  var close=document.getElementById('promoClose');
+  function open(){ scrim.classList.add('show'); requestAnimationFrame(function(){ scrim.classList.add('open'); }); document.body.style.overflow='hidden'; }
+  function hide(){ scrim.classList.remove('open'); document.body.style.overflow=''; setTimeout(function(){ scrim.classList.remove('show'); },350); }
+  close.addEventListener('click',hide);
+  scrim.addEventListener('click',function(e){ if(e.target===scrim) hide(); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&scrim.classList.contains('show')) hide(); });
+  scrim.querySelector('.promo-link').addEventListener('click',hide);
+  setTimeout(function(){
+    /* Promo expires Aug 8, 2026 12:00 AM EST (05:00 UTC) */
+    if (Date.now() < Date.parse('2026-08-08T05:00:00Z')) open();
+  },700);
+})();
+</script>
 
 <template id="__bundler_thumbnail" data-bg-color="#100c0a">
   <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
@@ -98,7 +173,6 @@
     <div class="hero-media">
       <video id="heroVideo" class="hero-video" autoplay muted loop playsinline preload="auto" aria-hidden="true">
         <source src="assets/hero.mp4" type="video/mp4">
-        <source src="https://video.wixstatic.com/video/6515c6_8a22045cd9f64cf3b42c777eea27a4a6/1080p/mp4/file.mp4#t=4" type="video/mp4">
       </video>
     </div>
     <div class="wrap hero-inner">
@@ -142,28 +216,34 @@
         <div class="event">
           <svg class="ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 4h16l-8 9v6m0 0h-3m3 0h3M4 4l8 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           <span class="day">Friday</span>
-          <span class="name">DJ Night</span>
-          <span class="desc">Top 40, Hip Hop &amp; Latin Beats</span>
+          <span class="name">Live Entertainment</span>
+          <span class="desc">Check calendar for specific details</span>
           <span class="time">9PM – 2AM</span>
         </div>
         <div class="event">
           <svg class="ico" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="9" y="2" width="6" height="12" rx="3" stroke="currentColor" stroke-width="1.5"/><path d="M5 11a7 7 0 0014 0M12 18v4M8 22h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
           <span class="day">Saturday</span>
-          <span class="name">Live Music Saturdays</span>
-          <span class="desc">Featuring Soul Connection</span>
+          <span class="name">Live Entertainment</span>
+          <span class="desc">Check calendar for specific details</span>
           <span class="time">8PM – 11PM</span>
         </div>
       </div>
       <a class="btn btn-ghost" href="entertainment.html" style="align-self:flex-start">View Full Entertainment Calendar</a>
+      <div class="upcoming reveal">
+        <p class="eyebrow"><span class="hair"></span>Upcoming Event</p>
+        <a class="upcoming-flyer" href="https://www.opentable.com/restref/client/?rid=1473520" target="_blank" rel="noopener">
+          <img src="assets/promo-romero.jpg" alt="An Evening of Flamenco, Jazz and Progressive Music — Romero Flamenco Progressive Trio with Cristina Candela, Romero and David Silliman. Friday August 7 at 7:30 PM at Fuego Steakhouse &amp; Bar." loading="lazy">
+        </a>
+      </div>
     </div>
     <div class="media">
-      <img class="media-img" src="assets/entertainment-fire.png" alt="Bottle-service fire show during a live entertainment night at Fuego Steakhouse & Bar" loading="lazy">
+      <img class="media-img" src="assets/photos/entertainment-live-band.jpg" alt="Live band performing — keys, bass and percussion — during an entertainment night at Fuego Steakhouse & Bar" loading="lazy">
     </div>
   </section>
 
   <!-- ============================ BRUNCH ============================ -->
   <section class="brunch" aria-labelledby="brunch-h">
-    <img id="brunch-plate" src="assets/photos/brunch-plate-fuego.jpg" alt="Fuego grilled chicken and avocado salad with pickled red onion and berry compote on a branded Fuego plate">
+    <img id="brunch-plate" src="assets/photos/brunch-pancakes.jpg" alt="A tall stack of Fuego brunch pancakes topped with fresh fruit and a maple syrup pour">
     <div class="copy reveal">
       <p class="eyebrow"><span class="hair"></span>Served Daily</p>
       <h2 id="brunch-h">Not Breakfast.<br>Not Lunch.<br><span class="accent-italic">Brunch.</span></h2>
@@ -308,8 +388,8 @@
         </address>
         <div class="socials">
           <a href="https://www.facebook.com/fuegosteakhouseandbar" target="_blank" rel="noopener" aria-label="Fuego Steakhouse & Bar on Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 22v-8h3l.5-3.5H13V8.4c0-1 .3-1.7 1.8-1.7H17V3.6c-.4-.05-1.5-.15-2.7-.15-2.7 0-4.5 1.6-4.5 4.6v2.45H7V14h2.8v8z"/></svg></a>
-          <a href="https://www.instagram.com/chsteakhouse/" target="_blank" rel="noopener" aria-label="Fuego Steakhouse & Bar on Instagram"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/><circle cx="17" cy="7" r="1.2" fill="currentColor"/></svg></a>
-          <a href="https://www.tiktok.com/@chsteakhouse?lang=es" target="_blank" rel="noopener" aria-label="Fuego Steakhouse & Bar on TikTok"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.5 3c.3 2 1.6 3.6 3.5 3.9v2.4c-1.3 0-2.5-.3-3.5-.9v6.1c0 3-2.4 5.5-5.4 5.5S5.7 17.5 5.7 14.5 8.1 9 11.1 9c.3 0 .6 0 .9.1v2.5c-.3-.1-.6-.2-.9-.2-1.5 0-2.7 1.2-2.7 2.7s1.2 2.7 2.7 2.7 2.7-1.2 2.7-2.7V3z"/></svg></a>
+          <a href="https://www.instagram.com/fuegolatinfusionsteakhouse/" target="_blank" rel="noopener" aria-label="Fuego Steakhouse & Bar on Instagram"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/><circle cx="17" cy="7" r="1.2" fill="currentColor"/></svg></a>
+          <a href="https://www.tiktok.com/@fuegolatinfusion?lang=es" target="_blank" rel="noopener" aria-label="Fuego Steakhouse & Bar on TikTok"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.5 3c.3 2 1.6 3.6 3.5 3.9v2.4c-1.3 0-2.5-.3-3.5-.9v6.1c0 3-2.4 5.5-5.4 5.5S5.7 17.5 5.7 14.5 8.1 9 11.1 9c.3 0 .6 0 .9.1v2.5c-.3-.1-.6-.2-.9-.2-1.5 0-2.7 1.2-2.7 2.7s1.2 2.7 2.7 2.7 2.7-1.2 2.7-2.7V3z"/></svg></a>
         </div>
       </div>
 
