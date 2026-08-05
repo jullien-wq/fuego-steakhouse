@@ -272,6 +272,12 @@ body.menu-open .mobile-nav{ opacity:1; visibility:visible; }
 .entertain .media::after{ content:""; position:absolute; inset:0; background:linear-gradient(90deg,var(--bg-soft),transparent 30%); }
 
 .events{ display:grid; grid-template-columns:repeat(3,1fr); gap:30px; margin-bottom:46px; }
+.ent-info-row{ display:flex; gap:26px; flex-wrap:wrap; align-items:center; padding:20px 0 30px; margin-bottom:8px; border-bottom:1px solid var(--line-soft); }
+.ent-info{ display:flex; gap:16px; align-items:center; }
+.ent-info svg{ width:3.25rem; height:3.25rem; color:var(--gold); flex:none; }
+.ent-info-divider{ width:1px; height:44px; background:var(--line-soft); }
+.ent-info-label{ display:block; font-size:11px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); margin-bottom:6px; }
+.ent-info-detail{ display:block; font-size:14px; color:var(--text-dim); line-height:1.5; }
 .event{ display:flex; flex-direction:column; gap:9px; }
 .event .ico{ width:30px; height:30px; color:var(--gold); margin-bottom:10px; }
 .event .day{ font-size:11px; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--text-mute); }
@@ -335,7 +341,11 @@ body.menu-open .mobile-nav{ opacity:1; visibility:visible; }
    ============================================================ */
 .events-menus{ background:var(--bg-deep); padding-block:var(--pad-section); }
 .events-atmo{ max-width:var(--maxw); margin:0 auto clamp(56px,7vw,92px); padding-inline:var(--gutter); }
-.events-atmo img{ width:100%; height:clamp(320px,40vw,520px); object-fit:cover; object-position:center 45%; border:1px solid var(--line); border-radius:var(--radius); display:block; }
+.events-atmo{ position:relative; }
+.events-atmo img{ width:100%; height:clamp(320px,40vw,520px); object-fit:cover; object-position:center 45%; border-radius:var(--radius); display:block; }
+.events-atmo::after{ content:""; position:absolute; inset:0 var(--gutter); border-radius:var(--radius); pointer-events:none;
+  box-shadow:inset 0 0 90px 34px var(--bg-deep), 0 30px 70px -30px rgba(0,0,0,.7);
+  background:radial-gradient(120% 90% at 50% 45%, transparent 55%, rgba(16,12,10,.55) 100%); }
 .em-grid{ display:grid; grid-template-columns:.86fr 1.14fr; gap:clamp(40px,6vw,90px); align-items:center; }
 .private h2{ margin-bottom:24px; }
 .private .lead{ margin-bottom:34px; max-width:40ch; }
