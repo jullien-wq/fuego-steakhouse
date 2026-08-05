@@ -68,11 +68,11 @@
 </head>
 <body>
 
-<div class="promo-scrim" id="promoScrim" role="dialog" aria-modal="true" aria-label="An Evening of Flamenco, Jazz &amp; Progressive Music — Romero Flamenco Progressive Trio, Friday August 7">
+<div class="promo-scrim" id="promoScrim" role="dialog" aria-modal="true" aria-label="Upcoming event announcement">
   <div class="promo-box">
     <button class="promo-close" id="promoClose" type="button" aria-label="Close announcement">&times;</button>
-    <a class="promo-link" href="https://www.opentable.com/restref/client/?rid=1473520" target="_blank" rel="noopener">
-      <img src="assets/promo-romero.jpg" alt="An Evening of Flamenco, Jazz and Progressive Music — Romero Flamenco Progressive Trio with Cristina Candela, Romero and David Silliman. Friday August 7 at 7:30 PM at Fuego Steakhouse &amp; Bar. Reservations recommended.">
+    <a class="promo-link" id="promoLink" href="https://www.opentable.com/restref/client/?rid=1473520" target="_blank" rel="noopener">
+      <img id="promoImg" src="assets/promo-romero.jpg" alt="">
     </a>
   </div>
 </div>
@@ -88,7 +88,8 @@
 .promo-close:hover{ background:var(--gold); color:#1a1207; }
 .upcoming{ margin-top:38px; padding-top:34px; border-top:1px solid var(--line-soft); }
 .upcoming .eyebrow{ margin-bottom:18px; }
-.upcoming-flyer{ display:block; max-width:340px; border:1px solid var(--line); border-radius:8px; overflow:hidden; box-shadow:0 18px 44px rgba(0,0,0,.45); transition:transform .4s var(--ease), border-color .4s var(--ease); }
+.upcoming-list{ display:flex; gap:20px; flex-wrap:wrap; }
+.upcoming-flyer{ display:block; max-width:220px; border:1px solid var(--line); border-radius:8px; overflow:hidden; box-shadow:0 18px 44px rgba(0,0,0,.45); transition:transform .4s var(--ease), border-color .4s var(--ease); }
 .upcoming-flyer:hover{ transform:translateY(-4px); border-color:var(--gold); }
 .upcoming-flyer img{ display:block; width:100%; height:auto; }
 @media (max-width:620px){ .promo-close{ top:-14px; right:-8px; width:40px; height:40px; font-size:23px; } }
@@ -103,9 +104,26 @@
   scrim.addEventListener('click',function(e){ if(e.target===scrim) hide(); });
   document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&scrim.classList.contains('show')) hide(); });
   scrim.querySelector('.promo-link').addEventListener('click',hide);
+  var romeroCard = document.getElementById('upcomingRomero');
+  if (romeroCard && Date.now() >= Date.parse('2026-08-08T05:00:00Z')) romeroCard.remove();
   setTimeout(function(){
-    /* Promo expires Aug 8, 2026 12:00 AM EST (05:00 UTC) */
-    if (Date.now() < Date.parse('2026-08-08T05:00:00Z')) open();
+    /* Sequential promos: Romero through Aug 7 night, then Sexy Brunch Aug 8–16 */
+    var now = Date.now();
+    var romeroEnds = Date.parse('2026-08-08T05:00:00Z');
+    var brunchEnds = Date.parse('2026-08-16T05:00:00Z');
+    var img = document.getElementById('promoImg');
+    var link = document.getElementById('promoLink');
+    if (now < romeroEnds) {
+      img.src = 'assets/promo-romero.jpg';
+      img.alt = 'An Evening of Flamenco, Jazz and Progressive Music — Romero Flamenco Progressive Trio with Cristina Candela, Romero and David Silliman. Friday August 7 at 7:30 PM at Fuego Steakhouse & Bar. Reservations recommended.';
+      link.href = 'https://www.opentable.com/restref/client/?rid=1473520';
+      open();
+    } else if (now < brunchEnds) {
+      img.src = 'assets/promo-brunch.jpg';
+      img.alt = 'Sexy Brunch — Sunday, August 16, 2026. Buffet style, live dancers, $39 per guest, unlimited mimosas +15. 11 AM to 4 PM at Fuego Steakhouse & Bar. Reserve your table today.';
+      link.href = 'https://www.opentable.com/restref/client/?rid=1473520';
+      open();
+    }
   },700);
 })();
 </script>
@@ -230,10 +248,15 @@
       </div>
       <a class="btn btn-ghost" href="entertainment.html" style="align-self:flex-start">View Full Entertainment Calendar</a>
       <div class="upcoming reveal">
-        <p class="eyebrow"><span class="hair"></span>Upcoming Event</p>
-        <a class="upcoming-flyer" href="https://www.opentable.com/restref/client/?rid=1473520" target="_blank" rel="noopener">
-          <img src="assets/promo-romero.jpg" alt="An Evening of Flamenco, Jazz and Progressive Music — Romero Flamenco Progressive Trio with Cristina Candela, Romero and David Silliman. Friday August 7 at 7:30 PM at Fuego Steakhouse &amp; Bar." loading="lazy">
-        </a>
+        <p class="eyebrow"><span class="hair"></span>Upcoming Events</p>
+        <div class="upcoming-list">
+          <a class="upcoming-flyer" href="https://www.opentable.com/restref/client/?rid=1473520" target="_blank" rel="noopener" id="upcomingRomero">
+            <img src="assets/promo-romero.jpg" alt="An Evening of Flamenco, Jazz and Progressive Music — Romero Flamenco Progressive Trio with Cristina Candela, Romero and David Silliman. Friday August 7 at 7:30 PM at Fuego Steakhouse &amp; Bar." loading="lazy">
+          </a>
+          <a class="upcoming-flyer" href="https://www.opentable.com/restref/client/?rid=1473520" target="_blank" rel="noopener">
+            <img src="assets/promo-brunch.jpg" alt="Sexy Brunch — Sunday, August 16, 2026. Buffet style, live dancers, $39 per guest, unlimited mimosas +15. 11 AM to 4 PM at Fuego Steakhouse &amp; Bar." loading="lazy">
+          </a>
+        </div>
       </div>
     </div>
     <div class="media">
