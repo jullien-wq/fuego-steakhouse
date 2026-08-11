@@ -104,23 +104,28 @@
   scrim.addEventListener('click',function(e){ if(e.target===scrim) hide(); });
   document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&scrim.classList.contains('show')) hide(); });
   scrim.querySelector('.promo-link').addEventListener('click',hide);
-  var romeroCard = document.getElementById('upcomingRomero');
-  if (romeroCard && Date.now() >= Date.parse('2026-08-08T05:00:00Z')) romeroCard.remove();
   setTimeout(function(){
-    /* Sequential promos: Romero through Aug 7 night, then Sexy Brunch Aug 8–16 */
+    /* Sequential promos (one at a time, midnight Eastern boundaries):
+       Latin Vibe through Sat Aug 15 → Sexy Brunch Sun Aug 16 → Romero through Fri Aug 21 */
     var now = Date.now();
-    var romeroEnds = Date.parse('2026-08-08T05:00:00Z');
-    var brunchEnds = Date.parse('2026-08-16T05:00:00Z');
+    var latinEnds  = Date.parse('2026-08-16T04:00:00Z');
+    var brunchEnds = Date.parse('2026-08-17T04:00:00Z');
+    var romeroEnds = Date.parse('2026-08-22T04:00:00Z');
     var img = document.getElementById('promoImg');
     var link = document.getElementById('promoLink');
-    if (now < romeroEnds) {
-      img.src = 'assets/promo-romero.jpg';
-      img.alt = 'An Evening of Flamenco, Jazz and Progressive Music — Romero Flamenco Progressive Trio with Cristina Candela, Romero and David Silliman. Friday August 7 at 7:30 PM at Fuego Steakhouse & Bar. Reservations recommended.';
+    if (now < latinEnds) {
+      img.src = 'assets/promo-latinvibe.jpg';
+      img.alt = 'Latin Vibe Saturday — Saturday, August 15 featuring DJ Alex Pro. Music from 9 PM, free parking, no cover. 921 JFK Blvd, North Bergen, NJ. Reservations: 201-864-8600.';
       link.href = 'https://www.opentable.com/restref/client/?rid=1473520';
       open();
     } else if (now < brunchEnds) {
       img.src = 'assets/promo-brunch.jpg';
       img.alt = 'Sexy Brunch — Sunday, August 16, 2026. Buffet style, live dancers, $39 per guest, unlimited mimosas +15. 11 AM to 4 PM at Fuego Steakhouse & Bar. Reserve your table today.';
+      link.href = 'https://www.opentable.com/restref/client/?rid=1473520';
+      open();
+    } else if (now < romeroEnds) {
+      img.src = 'assets/promo-romero-aug21.jpg';
+      img.alt = 'An Evening of Flamenco, Jazz and Progressive Music — Romero Flamenco Progressive Trio with Natalia Sánchez, Romero and David Silliman. Friday August 21 at 7:30 PM at Fuego Steakhouse & Bar. Reservations recommended.';
       link.href = 'https://www.opentable.com/restref/client/?rid=1473520';
       open();
     }
@@ -269,13 +274,24 @@
       <div class="upcoming reveal">
         <p class="eyebrow"><span class="hair"></span>Upcoming Events</p>
         <div class="upcoming-list">
-          <a class="upcoming-flyer" href="https://www.opentable.com/restref/client/?rid=1473520" target="_blank" rel="noopener" id="upcomingRomero">
-            <img src="assets/promo-romero.jpg" alt="An Evening of Flamenco, Jazz and Progressive Music — Romero Flamenco Progressive Trio with Cristina Candela, Romero and David Silliman. Friday August 7 at 7:30 PM at Fuego Steakhouse &amp; Bar." loading="lazy">
+          <a class="upcoming-flyer" href="https://www.opentable.com/restref/client/?rid=1473520" target="_blank" rel="noopener" data-ends="2026-08-16T04:00:00Z">
+            <img src="assets/promo-latinvibe.jpg" alt="Latin Vibe Saturday — Saturday, August 15 featuring DJ Alex Pro. Music from 9 PM, free parking, no cover. 921 JFK Blvd, North Bergen, NJ. Reservations: 201-864-8600." loading="lazy">
           </a>
-          <a class="upcoming-flyer" href="https://www.opentable.com/restref/client/?rid=1473520" target="_blank" rel="noopener">
+          <a class="upcoming-flyer" href="https://www.opentable.com/restref/client/?rid=1473520" target="_blank" rel="noopener" data-ends="2026-08-17T04:00:00Z">
             <img src="assets/promo-brunch.jpg" alt="Sexy Brunch — Sunday, August 16, 2026. Buffet style, live dancers, $39 per guest, unlimited mimosas +15. 11 AM to 4 PM at Fuego Steakhouse &amp; Bar." loading="lazy">
           </a>
+          <a class="upcoming-flyer" href="https://www.opentable.com/restref/client/?rid=1473520" target="_blank" rel="noopener" data-ends="2026-08-22T04:00:00Z">
+            <img src="assets/promo-romero-aug21.jpg" alt="An Evening of Flamenco, Jazz and Progressive Music — Romero Flamenco Progressive Trio with Natalia Sánchez, Romero and David Silliman. Friday August 21 at 7:30 PM at Fuego Steakhouse &amp; Bar." loading="lazy">
+          </a>
         </div>
+        <script>
+        (function(){
+          var flyers=document.querySelectorAll('.upcoming-flyer[data-ends]');
+          for (var i=0;i<flyers.length;i++){
+            if (Date.now() >= Date.parse(flyers[i].getAttribute('data-ends'))) flyers[i].parentNode.removeChild(flyers[i]);
+          }
+        })();
+        </script>
       </div>
     </div>
     <div class="media">
@@ -568,5 +584,6 @@
 </script>
 <script src="app.js"></script>
 <script src="flames.js"></script>
+<script type="text/javascript" src="//cdn.callrail.com/companies/810798184/e72ef99bbc36bac1eca7/12/swap.js"></script>
 </body>
 </html>
