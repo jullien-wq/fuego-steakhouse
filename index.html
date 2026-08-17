@@ -65,6 +65,22 @@
   "aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"5"}
 }
 </script>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window,document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '603324592033992');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=603324592033992&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
 </head>
 <body>
 
@@ -585,5 +601,150 @@
 <script src="app.js"></script>
 <script src="flames.js"></script>
 <script type="text/javascript" src="//cdn.callrail.com/companies/810798184/e72ef99bbc36bac1eca7/12/swap.js"></script>
+<script>
+/* Fuego Steakhouse & Bar — Meta Pixel event tracking
+   Dataset / Pixel ID: 603324592033992
+   Place this block immediately before </body> on every page,
+   AFTER the site's own scripts. */
+(function () {
+  if (typeof fbq !== 'function') return;
+
+  var PIXEL_ID  = '603324592033992';
+  var AVG_CHECK = 65;   // avg spend per guest in USD — edit to your real number
+  var EVENT_LEAD_VALUE = 500; // fallback value for a private-event inquiry
+
+  function uid() {
+    return 'fs-' + Date.now() + '-' + Math.random().toString(36).slice(2, 10);
+  }
+
+  function val(sel) {
+    var el = document.querySelector(sel);
+    return el && el.value ? String(el.value).trim() : '';
+  }
+
+  /* Advanced matching. fbq hashes these in the browser (SHA-256)
+     before anything leaves the page — raw values are never sent. */
+  function identify(email, phone, name) {
+    var ud = {};
+    if (email) { ud.em = email.toLowerCase(); }
+    if (phone) { ud.ph = phone.replace(/\D/g, ''); }
+    if (name) {
+      var parts = name.trim().toLowerCase().split(/\s+/);
+      ud.fn = parts[0];
+      if (parts.length > 1) { ud.ln = parts[parts.length - 1]; }
+    }
+    for (var k in ud) {
+      if (Object.prototype.hasOwnProperty.call(ud, k)) {
+        fbq('init', PIXEL_ID, ud);
+        return;
+      }
+    }
+  }
+
+  /* eventID lets a future Conversions API send dedupe against the browser event. */
+  function track(name, params) {
+    fbq('track', name, params || {}, { eventID: uid() });
+  }
+
+  /* ---------- 1. On-site reservation form -> Schedule ---------- */
+  var reserveForm = document.getElementById('reserveForm');
+  if (reserveForm) {
+    reserveForm.addEventListener('submit', function () {
+      var picked = reserveForm.querySelector(
+        '[aria-pressed="true"], .active, .selected, .is-active'
+      );
+      var guests = picked ? parseInt(picked.textContent, 10) : NaN;
+      if (!guests || isNaN(guests)) { guests = 2; }
+
+      identify(val('#rEmail'), val('#rPhone'), val('#rName'));
+      track('Schedule', {
+        content_name:     'Table Reservation - Website Form',
+        content_category: 'Reservation',
+        num_items:        guests,
+        value:            guests * AVG_CHECK,
+        currency:         'USD'
+      });
+    }, true);
+  }
+
+  /* ---------- 2. Private / large event inquiry -> Lead ---------- */
+  var eventForm = document.getElementById('eventForm');
+  if (eventForm) {
+    eventForm.addEventListener('submit', function () {
+      var guests = parseInt(val('#evGuests'), 10);
+      if (!guests || isNaN(guests)) { guests = 0; }
+
+      identify(val('#evEmail'), val('#evPhone'), val('#evName'));
+      track('Lead', {
+        content_name:     'Private Event Inquiry',
+        content_category: 'Private Events',
+        num_items:        guests,
+        value:            guests ? guests * AVG_CHECK : EVENT_LEAD_VALUE,
+        currency:         'USD'
+      });
+    }, true);
+  }
+
+  /* ---------- 3. Contact form -> Contact ---------- */
+  var contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    contactForm.addEventListener('submit', function () {
+      identify(val('#cEmail'), val('#cPhone'), val('#cName'));
+      track('Contact', {
+        content_name:     'Contact Form',
+        content_category: 'Contact'
+      });
+    }, true);
+  }
+
+  /* ---------- 4. Outbound clicks (works on every page) ---------- */
+  document.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest ? e.target.closest('a') : null;
+    if (!a) { return; }
+    var href = a.getAttribute('href') || '';
+
+    if (/opentable\.com/i.test(href)) {
+      track('Schedule', {
+        content_name:     'Table Reservation - OpenTable',
+        content_category: 'Reservation',
+        num_items:        2,
+        value:            2 * AVG_CHECK,
+        currency:         'USD'
+      });
+
+    } else if (/toasttab\.com\/online/i.test(href)) {
+      track('InitiateCheckout', {
+        content_name:     'Online Order - Toast',
+        content_category: 'Online Ordering',
+        currency:         'USD'
+      });
+
+    } else if (/toasttab\.com\/.*marketing-signup/i.test(href)) {
+      track('Lead', {
+        content_name:     'Newsletter Signup',
+        content_category: 'Email List'
+      });
+
+    } else if (/^tel:/i.test(href)) {
+      track('Contact', {
+        content_name:     'Phone Call Click',
+        content_category: 'Contact'
+      });
+
+    } else if (/^mailto:/i.test(href)) {
+      track('Contact', {
+        content_name:     'Email Click',
+        content_category: 'Contact'
+      });
+
+    } else if (/\.pdf($|\?)/i.test(href)) {
+      track('ViewContent', {
+        content_name:     'Menu PDF - ' + href.split('/').pop().split('?')[0],
+        content_category: 'Menu'
+      });
+    }
+  }, true);
+})();
+</script>
 </body>
 </html>
