@@ -133,6 +133,9 @@ src="https://www.facebook.com/tr?id=603324592033992&ev=PageView&noscript=1"/></n
     var latinEnds  = Date.parse('2026-08-16T04:00:00Z');
     var brunchEnds = Date.parse('2026-08-17T04:00:00Z');
     var romeroEnds = Date.parse('2026-08-22T04:00:00Z');
+    var romeroSepEnds = Date.parse('2026-09-05T04:00:00Z');
+    var latinSepEnds = Date.parse('2026-09-06T04:00:00Z');
+    var havanaEnds = Date.parse('2026-09-07T04:00:00Z');
     var img = document.getElementById('promoImg');
     var link = document.getElementById('promoLink');
     if (now < latinEnds) {
@@ -161,6 +164,21 @@ src="https://www.facebook.com/tr?id=603324592033992&ev=PageView&noscript=1"/></n
         vid.setAttribute('aria-label', 'DJ OZ — The Best of the 80s through the 2000s. Friday August 21 at Fuego Steakhouse & Bar. Music starts at 9 PM. Craft cocktails, premium steaks and seafood. 921 John F. Kennedy Blvd, North Bergen, NJ. 201-455-6055.');
         link.href = 'https://www.opentable.com/restref/client/?rid=1473520&dateTime=2026-08-21T21:00&partySize=2';
       }
+      open();
+    } else if (now < romeroSepEnds) {
+      img.src = 'assets/promo-romero-sep4.jpg';
+      img.alt = 'Fuego Steakhouse & Bar Live Music — Romero Trio Live: Cristina Candela (baile), Luis Ossa (percusion), Romero (guitar & vocals). Friday September 4 at 7:30 PM. Live music, tapas, cocktails, steaks. 921 John F Kennedy Blvd, North Bergen, NJ. Reserve your table: 201-455-6055.';
+      link.href = 'https://www.opentable.com/restref/client/?rid=1473520&dateTime=2026-09-04T19:30&partySize=2';
+      open();
+    } else if (now < latinSepEnds) {
+      img.src = 'assets/promo-latinvibe-sep5.jpg';
+      img.alt = 'Latin Vibe Saturday — Saturday September 5th, music by DJ Alex Pro. Music from 9 PM, free parking, no cover. 921 JFK Blvd, North Bergen, NJ. Reservations: 201-864-8600.';
+      link.href = 'https://www.opentable.com/restref/client/?rid=1473520&dateTime=2026-09-05T21:00&partySize=2';
+      open();
+    } else if (now < havanaEnds) {
+      img.src = 'assets/promo-havana-sep6.jpg';
+      img.alt = 'Fuego Brunch presents Havana All White Party — Sunday September 6, 12 PM to 4 PM. An afternoon in Havana: good food, live music, Cuban vibes. $45 per person, 2 hours of unlimited brunch. Come dressed in white!';
+      link.href = 'https://www.opentable.com/restref/client/?rid=1473520&dateTime=2026-09-06T12:00&partySize=2';
       open();
     }
   },700);
@@ -319,6 +337,18 @@ src="https://www.facebook.com/tr?id=603324592033992&ev=PageView&noscript=1"/></n
           </a>
           <a class="upcoming-flyer" href="https://www.opentable.com/restref/client/?rid=1473520&amp;dateTime=2026-08-21T21%3A00&amp;partySize=2" target="_blank" rel="noopener" data-ends="2026-08-22T04:00:00Z">
             <video src="assets/promo-djoz.mp4" muted autoplay loop playsinline preload="metadata" aria-label="DJ OZ — The Best of the 80s through the 2000s. Friday August 21 at Fuego Steakhouse &amp; Bar. Music starts at 9 PM. 921 John F. Kennedy Blvd, North Bergen, NJ. 201-455-6055."></video>
+          </a>
+          <a class="upcoming-flyer" href="https://www.opentable.com/restref/client/?rid=1473520&amp;dateTime=2026-09-04T19%3A30&amp;partySize=2" target="_blank" rel="noopener" data-ends="2026-09-05T04:00:00Z">
+            <img src="assets/promo-romero-sep4.jpg" alt="Fuego Steakhouse &amp; Bar Live Music — Romero Trio Live: Cristina Candela (baile), Luis Ossa (percusion), Romero (guitar &amp; vocals). Friday September 4 at 7:30 PM. Live music, tapas, cocktails, steaks. Reserve your table: 201-455-6055." loading="lazy">
+          </a>
+          <a class="upcoming-flyer" href="https://www.opentable.com/restref/client/?rid=1473520&amp;dateTime=2026-09-05T21%3A00&amp;partySize=2" target="_blank" rel="noopener" data-ends="2026-09-06T04:00:00Z">
+            <img src="assets/promo-latinvibe-sep5.jpg" alt="Latin Vibe Saturday — Saturday September 5th, music by DJ Alex Pro. Music from 9 PM, free parking, no cover. 921 JFK Blvd, North Bergen, NJ. Reservations: 201-864-8600." loading="lazy">
+          </a>
+          <a class="upcoming-flyer" href="https://www.opentable.com/restref/client/?rid=1473520&amp;dateTime=2026-09-06T12%3A00&amp;partySize=2" target="_blank" rel="noopener" data-ends="2026-09-07T04:00:00Z">
+            <img src="assets/promo-havana-sep6.jpg" alt="Fuego Brunch presents Havana All White Party — Sunday September 6, 12 PM to 4 PM. Good food, live music, Cuban vibes. $45 per person, 2 hours of unlimited brunch. Come dressed in white!" loading="lazy">
+          </a>
+          <a class="upcoming-flyer" href="https://www.opentable.com/restref/client/?rid=1473520&amp;dateTime=2026-09-06T12%3A00&amp;partySize=2" target="_blank" rel="noopener" data-ends="2026-09-07T04:00:00Z">
+            <img src="assets/promo-havana-included.jpg" alt="What's included in the Havana Experience: unlimited brunch buffet with traditional Cuban favorites and roasted pork, welcome glass of champagne, tiki bar, samples of Havana cocktails, Tropicana dancers in white, live violinist, DJ and Havana vibes. Reservations highly recommended — reserve now on OpenTable. Limited seating." loading="lazy">
           </a>
         </div>
         <script>
