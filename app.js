@@ -134,6 +134,28 @@
     return w;
   }
   function detach(el) { if (el && el.parentNode) el.parentNode.removeChild(el); }
+  var choiceWrap = null;
+  function buildChoice() {
+    var w = document.createElement('div');
+    w.id = 'reserveChoice';
+    w.className = 'modal-body reserve-choice';
+    w.innerHTML = '<p class="eyebrow"><span class="hair"></span>Reservations</p>' +
+      '<h3>Reserve a Table</h3>' +
+      '<p class="rc-sub">How would you like to book?</p>' +
+      '<div class="rc-actions">' +
+      '<button type="button" class="btn btn-gold" id="rcOnline">Reserve Online</button>' +
+      '<a class="btn btn-ghost" href="tel:+12017787496" id="rcCall">Call Now</a>' +
+      '</div>';
+    return w;
+  }
+  function showOtWidget() {
+    detach(choiceWrap); choiceWrap = null;
+    if (!otWrap || !otWrap.parentNode) {
+      detach(otWrap);
+      otWrap = buildOtWidget();
+      if (modalEl) modalEl.appendChild(otWrap);
+    }
+  }
 
   var currentMode = '';
   function openModal(mode) {
@@ -155,15 +177,17 @@
       var tt = document.getElementById('modalTitle'); if (tt) tt.textContent = 'Book Your Event';
       var sb = document.getElementById('modalSub'); if (sb) sb.textContent = 'Tell us about your celebration and our events team will reach out to craft it with you.';
     } else {
-      /* Make a Reservation: ONLY the OpenTable widget — lead form removed from DOM */
+      /* Make a Reservation: choice step first — Reserve Online or Call Now */
       detach(form);
       detach(success);
+      detach(otWrap); otWrap = null;
       if (modalEl) modalEl.classList.remove('modal-form');
       if (modalTop) modalTop.hidden = true;
-      if (!otWrap || !otWrap.parentNode) {
-        detach(otWrap);
-        otWrap = buildOtWidget();
-        if (modalEl) modalEl.appendChild(otWrap);
+      if (!choiceWrap || !choiceWrap.parentNode) {
+        detach(choiceWrap);
+        choiceWrap = buildChoice();
+        if (modalEl) modalEl.appendChild(choiceWrap);
+        choiceWrap.querySelector('#rcOnline').addEventListener('click', showOtWidget);
       }
     }
   }
