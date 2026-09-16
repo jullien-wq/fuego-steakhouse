@@ -527,3 +527,16 @@ body.menu-open .mobile-nav{ opacity:1; visibility:visible; }
 .reserve-choice .rc-sub{ color:var(--text-dim); font-size:15px; margin:0 0 8px; }
 .reserve-choice .rc-actions{ display:flex; flex-direction:column; gap:12px; width:100%; max-width:280px; }
 .reserve-choice .rc-actions .btn{ width:100%; padding:16px; }
+
+/* mobile sticky action bar */
+.mobile-bar{ display:none; }
+@media (max-width:760px){
+  .mobile-bar{ display:flex; gap:10px; position:fixed; left:0; right:0; bottom:0; z-index:55;
+    padding:12px var(--gutter) calc(12px + env(safe-area-inset-bottom));
+    background:rgba(16,12,10,.92); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+    border-top:1px solid var(--line-soft);
+    transition:transform .35s var(--ease), opacity .35s var(--ease); }
+  .mobile-bar .btn{ flex:1; padding:15px 10px; text-align:center; justify-content:center; }
+  .mobile-bar.bar-docked{ position:fixed; border-bottom:1px solid var(--line-soft); }
+  body{ padding-bottom:76px; }
+}

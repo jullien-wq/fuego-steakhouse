@@ -136,6 +136,8 @@ src="https://www.facebook.com/tr?id=603324592033992&ev=PageView&noscript=1"/></n
     var romeroSepEnds = Date.parse('2026-09-05T04:00:00Z');
     var latinSepEnds = Date.parse('2026-09-06T04:00:00Z');
     var havanaEnds = Date.parse('2026-09-07T04:00:00Z');
+    var romero18Ends = Date.parse('2026-09-19T04:00:00Z');
+    var latin19Ends = Date.parse('2026-09-20T04:00:00Z');
     var img = document.getElementById('promoImg');
     var link = document.getElementById('promoLink');
     if (now < latinEnds) {
@@ -179,6 +181,16 @@ src="https://www.facebook.com/tr?id=603324592033992&ev=PageView&noscript=1"/></n
       img.src = 'assets/promo-havana-sep6.jpg';
       img.alt = 'Fuego Brunch presents Havana All White Party — Sunday September 6, 12 PM to 4 PM. An afternoon in Havana: good food, live music, Cuban vibes. $45 per person, 2 hours of unlimited brunch. Come dressed in white!';
       link.href = 'https://www.opentable.com/restref/client/?rid=1473520&dateTime=2026-09-06T12:00&partySize=2';
+      open();
+    } else if (now < romero18Ends) {
+      img.src = 'assets/promo-romero-sep18.jpg';
+      img.alt = 'Romero Flamenco Progressive Trio with Paloma de Vega y Marisa Clementi — Thursday September 18 at 7:30 PM at Fuego Steakhouse & Bar, North Bergen, NJ. fuegosteaks.com';
+      link.href = 'https://www.opentable.com/restref/client/?rid=1473520&dateTime=2026-09-18T19:30&partySize=2';
+      open();
+    } else if (now < latin19Ends) {
+      img.src = 'assets/promo-latinvibe-sep19.jpg';
+      img.alt = 'Latin Vibe Saturday — Saturday September 19, music by DJ AlexPro. Music from 9 PM, free parking, no cover. 921 JFK Blvd, North Bergen, NJ. 201-824-8600.';
+      link.href = 'https://www.opentable.com/restref/client/?rid=1473520&dateTime=2026-09-19T21:00&partySize=2';
       open();
     }
   },700);
@@ -348,7 +360,12 @@ src="https://www.facebook.com/tr?id=603324592033992&ev=PageView&noscript=1"/></n
             <img src="assets/promo-havana-sep6.jpg" alt="Fuego Brunch presents Havana All White Party — Sunday September 6, 12 PM to 4 PM. Good food, live music, Cuban vibes. $45 per person, 2 hours of unlimited brunch. Come dressed in white!" loading="lazy">
           </a>
           <a class="upcoming-flyer" href="https://www.opentable.com/restref/client/?rid=1473520&amp;dateTime=2026-09-06T12%3A00&amp;partySize=2" target="_blank" rel="noopener" data-ends="2026-09-07T04:00:00Z">
-            <img src="assets/promo-havana-included.jpg" alt="What's included in the Havana Experience: unlimited brunch buffet with traditional Cuban favorites and roasted pork, welcome glass of champagne, tiki bar, samples of Havana cocktails, Tropicana dancers in white, live violinist, DJ and Havana vibes. Reservations highly recommended — reserve now on OpenTable. Limited seating." loading="lazy">
+          </a>
+          <a class="upcoming-flyer" href="https://www.opentable.com/restref/client/?rid=1473520&amp;dateTime=2026-09-18T19%3A30&amp;partySize=2" target="_blank" rel="noopener" data-ends="2026-09-19T04:00:00Z">
+            <img src="assets/promo-romero-sep18.jpg" alt="Romero Flamenco Progressive Trio with Paloma de Vega y Marisa Clementi — Thursday September 18 at 7:30 PM at Fuego Steakhouse &amp; Bar, North Bergen, NJ." loading="lazy">
+          </a>
+          <a class="upcoming-flyer" href="https://www.opentable.com/restref/client/?rid=1473520&amp;dateTime=2026-09-19T21%3A00&amp;partySize=2" target="_blank" rel="noopener" data-ends="2026-09-20T04:00:00Z">
+            <img src="assets/promo-latinvibe-sep19.jpg" alt="Latin Vibe Saturday — Saturday September 19, music by DJ AlexPro. Music from 9 PM, free parking, no cover. 921 JFK Blvd, North Bergen, NJ. 201-824-8600." loading="lazy">
           </a>
         </div>
         <script>

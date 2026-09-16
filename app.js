@@ -197,6 +197,35 @@
     setTimeout(function () { scrim.hidden = true; }, 350);
     if (lastFocus) lastFocus.focus();
   }
+  /* ---------- mobile sticky action bar (stops at the footer) ---------- */
+  (function () {
+    if (document.getElementById('mobileBar')) return;
+    var bar = document.createElement('div');
+    bar.id = 'mobileBar';
+    bar.className = 'mobile-bar';
+    bar.innerHTML = '<button class="btn btn-gold" data-reserve>Reserve a Table</button>' +
+      '<a class="btn btn-ghost" href="large-events.html">Private Events</a>';
+    document.body.appendChild(bar);
+    var footer = document.querySelector('.footer');
+    if (footer) {
+      var dock = function () {
+        var fTop = footer.getBoundingClientRect().top;
+        var vh = window.innerHeight;
+        if (fTop <= vh) {
+          /* footer entered the viewport: pin the bar to sit directly on top of it */
+          bar.classList.add('bar-docked');
+          bar.style.bottom = (vh - fTop) + 'px';
+        } else {
+          bar.classList.remove('bar-docked');
+          bar.style.bottom = '';
+        }
+      };
+      window.addEventListener('scroll', dock, { passive: true });
+      window.addEventListener('resize', dock);
+      dock();
+    }
+  })();
+
   document.querySelectorAll('[data-reserve]').forEach(function (b) {
     b.addEventListener('click', function (e) { e.preventDefault(); openModal(b.getAttribute('data-mode')); });
   });
